@@ -48,6 +48,7 @@ section{display:grid;gap:10px}
 .btns{display:flex;flex-wrap:wrap;gap:6px}
 .btn{background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:6px 10px;font:500 12.5px var(--f-ui);cursor:pointer}
 .btn:hover{border-color:var(--gold-dim)}
+.btn[aria-pressed="true"]{background:var(--gold);color:#1a1206;border-color:var(--gold);font-weight:600}
 button:focus-visible,input:focus-visible,.drop:focus-within{outline:2px solid var(--gold);outline-offset:2px}
 .drop{border:1px dashed var(--line);border-radius:8px;padding:12px;display:grid;gap:8px;font-size:12.5px;color:var(--muted)}
 .drop.over{border-color:var(--gold);color:var(--ink)}
@@ -105,6 +106,8 @@ progress{width:100%;height:6px;accent-color:var(--gold)}
         <button id="m-p" data-mode="phase" aria-pressed="false">Phase</button>
       </div>
       <div class="note" id="modeNote"></div>
+      <div class="btns"><button class="btn" type="button" id="xflat" aria-pressed="true">X축 1차 Flatten</button></div>
+      <div class="note" id="xflatNote"></div>
     </section>
 
     <section>
@@ -287,6 +290,30 @@ function flattenHeight(z,W,Hh){
 function flattenChannel(z,W,Hh){
   const f=lineFlat(z,W,Hh,0,null);const med=pct(f,50);for(let k=0;k<f.length;k++)f[k]-=med;return f;
 }
+// X-axis line flatten, order 1 — the same calculation as AFM Flatten Export (tools/afm-flatten-export/src/app.js lineFlatten)
+// and afm/afm_export.py: per line, least-squares polynomial in x (scaled to −1…1), order capped at valid pixels − 1, NaN kept
+function xLineFlatten(data,w,h,order=1){
+  const out=new Float64Array(data.length);
+  const xs=new Float64Array(w); for(let x=0;x<w;x++) xs[x]= w>1 ? 2*x/(w-1)-1 : 0;
+  for(let y=0;y<h;y++){
+    let nv=0; for(let x=0;x<w;x++) if(Number.isFinite(data[y*w+x])) nv++;
+    if(!nv){ for(let x=0;x<w;x++) out[y*w+x]=NaN; continue; }
+    const m=Math.min(order,nv-1)+1;
+    const A=Array.from({length:m},()=>new Float64Array(m+1));
+    for(let x=0;x<w;x++){ const v=data[y*w+x]; if(!Number.isFinite(v)) continue; let pi=1; const pw=[];
+      for(let k=0;k<2*m;k++){pw.push(pi);pi*=xs[x];}
+      for(let r=0;r<m;r++){ for(let c=0;c<m;c++) A[r][c]+=pw[r+c]; A[r][m]+=pw[r]*v; } }
+    const coef=xSolve(A,m);
+    for(let x=0;x<w;x++){ let f=0,pi=1; for(let k=0;k<m;k++){f+=coef[k]*pi;pi*=xs[x];} out[y*w+x]=Number.isFinite(data[y*w+x])?data[y*w+x]-f:NaN; }
+  }
+  return out;
+}
+function xSolve(A,m){
+  for(let i=0;i<m;i++){ let piv=i; for(let r=i+1;r<m;r++) if(Math.abs(A[r][i])>Math.abs(A[piv][i])) piv=r;
+    [A[i],A[piv]]=[A[piv],A[i]]; const a=A[i][i]||1e-300;
+    for(let r=0;r<m;r++){ if(r===i) continue; const f=A[r][i]/a; for(let c=i;c<=m;c++) A[r][c]-=f*A[i][c]; } }
+  return Array.from({length:m},(_,i)=>A[i][m]/(A[i][i]||1e-300));
+}
 // ---- GIF89a encoder: global median-cut palette, transparent index 255, LZW ----
 function medianCut(samples,nColors){ // samples: Uint8Array rgb triplets
   const n=samples.length/3;let boxes=[{idx:Uint32Array.from({length:n},(_,i)=>i)}];
@@ -367,12 +394,19 @@ const $=id=>document.getElementById(id);
 const st={mode:'overlay',zs:{overlay:6,height:15,phase:12},crange:{},data:null};
 
 // ---------- data ----------
+// X축 1차 Flatten (button): on = the same line flatten as AFM Flatten Export (X axis, order 1) on every channel;
+// off = the viewer's own flatten (plane fit, then line flatten that ignores raised features). The raw data is kept to switch.
+let XFLAT=true;try{XFLAT=localStorage.getItem('afm3d-xflat')!=='0';}catch(e){}
+function applyFlatten(d){const {W,Hh}=d;
+  d.h=XFLAT?xLineFlatten(d.hRaw,W,Hh,1):flattenHeight(d.hRaw,W,Hh);
+  if(d.pRaw)d.p=XFLAT?xLineFlatten(d.pRaw,W,Hh,1):(d.pUnit==='nm'?flattenHeight(d.pRaw,W,Hh):flattenChannel(d.pRaw,W,Hh));
+  return d;}
 function loadPair(bufH,bufP,nameH,nameP){
   const A=parsePark(bufH),W=A.H.xres,Hh=A.H.yres;
-  const d={W,Hh,size:A.H.xreal*1000,sizeY:(A.H.yreal||A.H.xreal)*1000,h:flattenHeight(A.z,W,Hh),hUnit:A.H.unit,hName:A.H.source,info:A.H,nameH};
+  const d={W,Hh,size:A.H.xreal*1000,sizeY:(A.H.yreal||A.H.xreal)*1000,hRaw:A.z,hUnit:A.H.unit,hName:A.H.source,info:A.H,nameH};
   if(bufP){const B=parsePark(bufP);if(B.H.xres!==W||B.H.yres!==Hh)throw new Error('두 파일의 픽셀 수가 달라요');
-    d.p=B.H.unit==='nm'?flattenHeight(B.z,W,Hh):flattenChannel(B.z,W,Hh);d.pUnit=B.H.unit;d.pName=B.H.source;d.nameP=nameP;}
-  return d;
+    d.pRaw=B.z;d.pUnit=B.H.unit;d.pName=B.H.source;d.nameP=nameP;}
+  return applyFlatten(d);
 }
 function autoRange(a){return[pct(a,0.5),pct(a,99.5)];}
 
@@ -501,7 +535,8 @@ function buildAxes(base,zmin,zs){
   const {z,zUnit}=currentArrays();let zmax=-Infinity;for(let k=0;k<z.length;k++)if(z[k]>zmax)zmax=z[k];if(!Number.isFinite(zmax))zmax=zmin;
   const zr=zmax-zmin,zx=L+off,zy=LY+off;
   const labH=S/470*ls*16*1.3*1.5, nz=Math.max(1,Math.min(3,Math.floor(zr*zs/labH)));   // no more Z labels than fit without overlapping
-  const zst=zr>0?niceStep(zr,nz):1;
+  let zst=zr>0?niceStep(zr,nz):1;   // at least two labels (values can start below 0 after a line flatten)
+  for(let n=nz+1;zr>0&&n<=6&&Math.floor(zmax/zst)-Math.ceil(zmin/zst)<1;n++)zst=niceStep(zr,n);
   seg([[zx,zy,0],[zx,zy,zr*zs]]);
   const zt=[];for(let v=Math.ceil(zmin/zst)*zst;v<=zmax+1e-9;v+=zst){const h=(v-zmin)*zs;zt.push([zx,zy,h],[zx+tk,zy,h]);
     const dec=Math.max(0,-Math.floor(Math.log10(zst)+1e-9));const s=textSprite((Math.abs(v)<zst*1e-6?0:+v.toFixed(dec))+'',16,null,[0,.5]);s.position.set(zx+gap,zy,h);axesGrp.add(s);}
@@ -545,6 +580,14 @@ function labelFrom(name){const m=/^(.*?)_Z_Height|^(.*?)_(?:NCM_)?Phase/i.exec(n
 
 document.querySelectorAll('.seg button[data-mode]').forEach(bt=>bt.onclick=()=>{st.mode=bt.dataset.mode;syncUI();build();});
 $('auto').onchange=e=>setAuto(e.target.checked);
+function syncXflat(){$('xflat').setAttribute('aria-pressed',XFLAT);
+  $('xflatNote').textContent=XFLAT?'켜짐: Flatten Export 와 같은 계산 (줄마다 X 방향 1차 직선을 빼기, 모든 채널).'
+    :'꺼짐: 뷰어 자체 보정 (plane fit 후 돌출부를 빼고 line flatten, Phase 는 줄마다 평균만 맞춤).';}
+$('xflat').onclick=()=>{if(exporting)return;XFLAT=!XFLAT;try{localStorage.setItem('afm3d-xflat',XFLAT?'1':'0');}catch(e){}
+  syncXflat();if(!st.data)return;applyFlatten(st.data);const d=st.data;   // same sample and view, new flatten: colour ranges back to auto
+  st.crange={height:autoRange(d.h)};if(d.p){st.crange.phase=autoRange(d.p);st.crange.overlay=st.crange.phase.slice();}
+  syncUI();build();};
+syncXflat();
 const MOTION_TXT={cine:'멈췄다가 천천히 출발해 가운데에서 빨라지고, 다시 감속해 멈춰요. 도는 동안 시점이 살짝 내려갔다 올라와요.',const:'같은 속도로 계속 돌아요.'};
 function syncMotion(){document.querySelectorAll('[data-motion]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.motion===anim.motion));
   document.querySelectorAll('.cineOnly').forEach(r=>r.hidden=anim.motion!=='cine');$('motionNote').textContent=MOTION_TXT[anim.motion];gifInfo();}
@@ -583,7 +626,7 @@ const files={h:null,p:null};
 $('fileH').onchange=e=>{if(exporting)return;const f=e.target.files[0];e.target.value='';if(!f)return;files.h=f;files.p=null;tryLoad();};
 $('fileP').onchange=e=>{if(exporting)return;const f=e.target.files[0];e.target.value='';if(!f)return;files.p=f;tryLoad();};
 $('clearP').onclick=()=>{if(exporting||!files.h&&!st.data)return;files.p=null;
-  if(files.h)tryLoad();else if(st.data){const d={...st.data};delete d.p;delete d.pUnit;delete d.pName;d.nameP='';setData(d,st.label);}};
+  if(files.h)tryLoad();else if(st.data){const d={...st.data};delete d.p;delete d.pRaw;delete d.pUnit;delete d.pName;d.nameP='';setData(d,st.label);}};
 const drop=$('drop');
 ['dragenter','dragover'].forEach(t=>drop.addEventListener(t,e=>{e.preventDefault();drop.classList.add('over');}));
 ['dragleave','drop'].forEach(t=>drop.addEventListener(t,e=>{e.preventDefault();drop.classList.remove('over');}));
