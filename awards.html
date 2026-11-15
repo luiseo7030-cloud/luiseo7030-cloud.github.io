@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+</head>
+<body>
+<title>Awards</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/cv.js"></script>
+<script src="assets/common.js"></script>
+<style>
+/* card grid in the style of the lab's AWARDS page: picture on top, short title, team members for team awards */
+.aw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));gap:28px 22px}
+.ac{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;min-width:0}
+.ac .pic{width:100%;height:210px;display:flex;justify-content:center;align-items:center;gap:8px;padding:14px;border-radius:10px;
+  background:var(--sunk);border:1px solid var(--line);cursor:zoom-in;transition:border-color .15s,transform .15s}
+.ac .pic:hover{border-color:var(--gold);transform:translateY(-2px)}
+.ac .pic img{height:100%;width:auto;max-width:100%;object-fit:contain;display:block;background:#fff;box-shadow:0 3px 10px rgba(14,17,20,.14)}
+.ac .pic.two img{max-width:calc(50% - 4px)}
+.ac .d{font:500 11.5px/1 var(--mono);color:var(--muted);letter-spacing:.04em;margin-top:6px}
+.ac h3{margin:0;font:700 16px/1.45 var(--display);word-break:keep-all}
+.ac.star h3::before{content:"★ ";color:var(--gold)}
+.ac .who{margin:0;font-size:13.5px;line-height:1.5;color:var(--muted);word-break:keep-all}
+.ac .src{margin:2px 0 0;display:flex;gap:5px;flex-wrap:wrap;justify-content:center}
+.ac .src a{font:600 10.5px/1 var(--mono);padding:4px 7px;border-radius:2px;border:1px solid var(--line);color:var(--link);text-decoration:none}
+.ac .src a:hover{border-color:var(--link)}
+
+ul.more{list-style:none;margin:0 auto;padding:0;max-width:760px;width:100%}
+ul.more li{display:grid;grid-template-columns:96px minmax(0,1fr);gap:14px;padding:11px 0;border-top:1px solid var(--line);font-size:14px}
+ul.more li:first-child{border-top:0}
+ul.more .w{font:500 13px/1.6 var(--mono);color:var(--muted)}
+ul.more .k{font:600 10px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:4px 6px;border-radius:2px;margin-right:8px;
+  background:var(--accent-soft);color:var(--accent);vertical-align:2px}
+ul.more .k.scholarship{background:var(--warn-soft);color:var(--warn)}
+ul.more p{margin:3px 0 0;color:var(--muted);font-size:13px}
+
+dialog.lb{border:0;padding:0;background:transparent;max-width:min(92vw,620px);width:100%;overflow:visible}
+dialog.lb::backdrop{background:rgba(10,12,15,.82)}
+dialog.lb .imgs{display:flex;gap:10px}
+dialog.lb img{flex:1;min-width:0;width:100%;height:auto;max-height:82vh;object-fit:contain;display:block;border-radius:6px;background:#fff}
+dialog.lb p{margin:10px 0 0;color:#fff;font-size:13.5px;text-align:center;word-break:keep-all}
+dialog.lb .x{position:absolute;top:-14px;right:-14px;width:36px;height:36px;border-radius:50%;border:0;background:var(--gold);color:#16181b;
+  font:600 18px/1 var(--sans);cursor:pointer}
+@media (max-width:560px){dialog.lb .x{top:-44px;right:0}}
+</style>
+
+<nav class="site-nav" aria-label="사이트 메뉴"><div class="nav-in"><a class="logo" href="index.html">Kyungwon <b>Seo</b></a><ul><li><a href="index.html">Profile</a></li><li><a href="publications.html">Publications</a></li><li><a href="news.html">News</a></li><li><a href="awards.html" data-home aria-current="page">Awards</a></li><li><a href="afm-3d-viewer/">AFM 3D Viewer</a></li></ul></div></nav>
+<header class="page-band">
+  <div class="band-inner">
+    <span class="eyebrow">Kyungwon Seo</span>
+    <h1>Awards &amp; Achievements</h1>
+    <p id="sub"></p>
+  </div>
+</header>
+
+<section class="band" id="certificates">
+  <div class="band-in">
+    <div class="aw-grid" id="grid"></div>
+  </div>
+</section>
+
+<section class="band alt tight" id="more">
+  <div class="band-in">
+    <div class="sh" data-rv><span class="lbl">More</span><h2>Scholarships &amp; Other Honors</h2></div>
+    <ul class="more" id="list" data-rv></ul>
+  </div>
+</section>
+
+<dialog class="lb" id="lb" aria-label="상장 크게 보기">
+  <button class="x" type="button" aria-label="닫기">×</button>
+  <div class="imgs" id="lb-imgs"></div>
+  <p id="lb-cap"></p>
+</dialog>
+
+<script>
+(function(){
+  const cv = window.KW_CV, esc = KW.esc, $ = id => document.getElementById(id);
+  const MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  const fmt = d => { const [y, m, dd] = d.split("-"); return !m ? y : !dd ? `${MON[m - 1]} ${y}` : `${MON[m - 1]} ${+dd}, ${y}`; };
+  const A = (cv.news || []).filter(n => n.tag === "award" || n.tag === "scholarship");
+  const rank = n => n.star ? 0 : n.minor ? 2 : 1;            // starred first, small ones last, newest first within each
+  const cards = A.filter(n => n.certs && n.certs.length).sort((a, b) => rank(a) - rank(b) || b.date.localeCompare(a.date));
+  const rest = A.filter(n => !(n.certs && n.certs.length)).sort((a, b) => b.date.localeCompare(a.date));
+
+  $("sub").textContent = `${A.filter(n => n.tag === "award").length} awards and ${A.filter(n => n.tag === "scholarship").length} scholarships`;
+  $("grid").innerHTML = cards.map((n, i) => `<article class="ac${n.star ? " star" : ""}">
+    <button type="button" class="pic${n.certs.length > 1 ? " two" : ""}" data-i="${i}" aria-label="상장 크게 보기: ${esc(n.title)}">${
+      n.certs.map(s => `<img src="${esc(s)}" alt="" loading="lazy" width="910" height="1287">`).join("")}</button>
+    <span class="d">${esc(fmt(n.date))}</span>
+    <h3>${esc(n.card ? n.card.t : n.title)}</h3>
+    ${n.card && n.card.who ? `<p class="who">${esc(n.card.who)}</p>` : ""}${
+    (n.links || []).length ? `<p class="src">${n.links.map(l => `<a href="${esc(l.href)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join("")}</p>` : ""}</article>`).join("");
+
+  $("list").innerHTML = rest.map(n => `<li><span class="w">${esc(fmt(n.date))}</span><div><span class="k ${esc(n.tag)}">${
+    n.tag === "scholarship" ? "Scholarship" : "Award"}</span>${esc(n.title)}${n.text ? `<p>${esc(n.text)}</p>` : ""}</div></li>`).join("");
+
+  const lb = $("lb");
+  $("grid").addEventListener("click", e => {
+    const b = e.target.closest("button[data-i]"); if (!b) return;
+    const n = cards[+b.dataset.i];
+    $("lb-imgs").innerHTML = n.certs.map(s => `<img src="${esc(s)}" alt="Certificate: ${esc(n.title)}">`).join("");
+    $("lb-cap").textContent = `${fmt(n.date)} · ${n.title}`;
+    lb.showModal();
+  });
+  lb.addEventListener("click", e => { if (e.target === lb || e.target.closest(".x")) lb.close(); });
+})();
+</script>
+
+<footer class="site-foot"><div class="foot-in"><span class="mark">Kyungwon <b>Seo</b></span><span>한양대학교 화학공학과 이미징 기반 소재 지능 연구실</span></div></footer>
+
+</body>
+</html>

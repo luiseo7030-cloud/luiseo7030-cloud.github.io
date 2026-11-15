@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+</head>
+<body>
+<title>News</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/cv.js"></script>
+<script src="assets/common.js"></script>
+<style>
+.nb-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:28px;max-width:720px}
+@media (max-width:640px){.nb-stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.nb-stats>*{padding:14px 16px;border:1px solid rgba(255,255,255,.18);border-radius:10px;background:rgba(255,255,255,.04);text-decoration:none}
+.nb-stats a:hover{border-color:var(--gold)}
+.nb-stats b{display:block;font:600 30px/1 var(--display);color:var(--gold);font-variant-numeric:tabular-nums}
+.nb-stats span{font-size:12.5px;color:var(--band-muted)}
+
+.filt{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+.filt button{font:600 13px/1 var(--sans);padding:10px 15px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--muted);cursor:pointer}
+.filt button[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#16181b}
+.filt .c{font-family:var(--mono);margin-left:5px;opacity:.75}
+
+.yrs{display:flex;flex-direction:column;gap:28px}
+.yr{display:grid;grid-template-columns:110px minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:640px){.yr{grid-template-columns:minmax(0,1fr);gap:6px}}
+.yr>h3{margin:0;font:600 40px/1 var(--display);color:var(--line);position:sticky;top:84px}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .yr>h3{color:#3a3f48}}
+:root[data-theme="dark"] .yr>h3{color:#3a3f48}
+@media (max-width:640px){.yr>h3{position:static;font-size:30px;color:var(--accent)}}
+ol.feed{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+ol.feed>li{display:grid;grid-template-columns:118px minmax(0,1fr);gap:16px;padding:16px 0;border-top:1px solid var(--line)}
+ol.feed>li:first-child{border-top:0;padding-top:4px}
+@media (max-width:560px){ol.feed>li{grid-template-columns:minmax(0,1fr);gap:4px}}
+.fd{font:500 13px/1.7 var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.ft{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.ft h4{margin:0;font:600 16px/1.45 var(--display);word-break:keep-all}
+.fx{margin:5px 0 0;font-size:14px;line-height:1.65;color:var(--muted)}
+.tg{font:600 10.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:5px 7px;border-radius:2px;white-space:nowrap;
+  background:var(--sunk);color:var(--muted);border:1px solid var(--line)}
+.tg.paper{background:var(--ok-soft);color:var(--ok);border-color:transparent}
+.tg.press{background:#16181b;color:var(--gold);border-color:transparent}
+.tg.patent{background:var(--accent-soft);color:var(--accent);border-color:transparent}
+.fl{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}
+.fl a{font:600 11px/1 var(--mono);padding:5px 8px;border-radius:2px;border:1px solid var(--line);color:var(--link);text-decoration:none;white-space:nowrap}
+.fl a:hover{border-color:var(--link)}
+ol.feed>li.star{background:var(--accent-soft);border-radius:10px;padding:16px 14px;border-top-color:transparent;margin-block:3px}
+ol.feed>li.star+li{border-top-color:transparent}
+ol.feed>li.star .fd{color:var(--accent);font-weight:600}
+ol.feed>li.star h4::before{content:"★ ";color:var(--gold)}
+ol.feed>li.minor{padding-block:10px}
+ol.feed>li.minor h4{font:500 14px/1.5 var(--sans);color:var(--fg)}
+.empty{color:var(--muted);text-align:center}
+.more{text-align:center}
+</style>
+
+<nav class="site-nav" aria-label="사이트 메뉴"><div class="nav-in"><a class="logo" href="index.html">Kyungwon <b>Seo</b></a><ul><li><a href="index.html">Profile</a></li><li><a href="publications.html">Publications</a></li><li><a href="news.html" data-home aria-current="page">News</a></li><li><a href="awards.html">Awards</a></li><li><a href="afm-3d-viewer/">AFM 3D Viewer</a></li></ul></div></nav>
+<header class="page-band">
+  <div class="band-inner">
+    <span class="eyebrow">Kyungwon Seo</span>
+    <h1>News</h1>
+    <p>Papers, press coverage and lab news.</p>
+    <div class="nb-stats" id="nb"></div>
+  </div>
+</header>
+
+<section class="band" id="all">
+  <div class="band-in">
+    <div class="filt" id="filt" role="group" aria-label="종류 선택"></div>
+    <div class="yrs" id="yrs"></div>
+    <div class="btn-row more"><a class="pbtn" href="awards.html">Awards &amp; Achievements</a></div>
+  </div>
+</section>
+
+<script>
+(function(){
+  const cv = window.KW_CV, esc = KW.esc, $ = id => document.getElementById(id);
+  const ALL = (cv.news || []).slice().sort((a, b) => b.date.localeCompare(a.date));
+  const AWARD = t => t === "award" || t === "scholarship";      // these live on awards.html
+  const N = ALL.filter(n => !AWARD(n.tag));
+  const MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  const fmt = d => { const [y, m, dd] = d.split("-"); return !m ? y : !dd ? `${MON[m - 1]} ${y}` : `${MON[m - 1]} ${+dd}, ${y}`; };
+  const TAGS = [["all", "All"], ["paper", "Papers"], ["patent", "Patents"], ["talk", "Talks"], ["press", "Press"], ["lab", "Lab"]];
+  const label = t => (TAGS.find(x => x[0] === t) || [t, t])[1].replace(/s$/, "");
+  const links = (L, cls) => L && L.length ? `<div class="${cls}">${L.map(l =>
+    `<a href="${esc(l.href)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join("")}</div>` : "";
+
+  const P = N.filter(n => n.tag === "press");
+  const outlets = new Set(P.flatMap(n => (n.links || []).map(l => l.label)));
+  $("nb").innerHTML = [
+    [N.filter(n => n.tag === "paper").length, "Papers published"],
+    [P.length, "Press stories"],
+    [outlets.size, "News outlets"]
+  ].map(([n, l]) => `<div><b>${n}</b><span>${l}</span></div>`).join("") +
+    `<a href="awards.html"><b>${ALL.filter(n => AWARD(n.tag)).length}</b><span>Awards &amp; scholarships →</span></a>`;
+
+  function show(tag){
+    const L = N.filter(n => tag === "all" || n.tag === tag);
+    const years = [...new Set(L.map(n => n.date.slice(0, 4)))];
+    $("yrs").innerHTML = years.length ? years.map(y => `<div class="yr"><h3>${y}</h3><ol class="feed">${
+      L.filter(n => n.date.startsWith(y)).map(n => `<li class="${n.star ? "star" : ""}${n.minor ? " minor" : ""}">
+        <span class="fd">${esc(fmt(n.date))}</span><div><div class="ft"><span class="tg ${esc(n.tag)}">${esc(label(n.tag))}</span><h4>${esc(n.title)}</h4></div>${
+        n.text ? `<p class="fx">${esc(n.text)}</p>` : ""}${links(n.links, "fl")}</div></li>`).join("")
+    }</ol></div>`).join("") : `<p class="empty">No news yet.</p>`;
+    [...$("filt").children].forEach(b => b.setAttribute("aria-pressed", b.dataset.t === tag ? "true" : "false"));
+  }
+  $("filt").innerHTML = TAGS.filter(([t]) => t === "all" || N.some(n => n.tag === t)).map(([t, l]) =>
+    `<button type="button" data-t="${t}">${l}<span class="c">${t === "all" ? N.length : N.filter(n => n.tag === t).length}</span></button>`).join("");
+  $("filt").addEventListener("click", e => { const b = e.target.closest("button"); if (b) show(b.dataset.t); });
+  show("all");
+})();
+</script>
+
+<footer class="site-foot"><div class="foot-in"><span class="mark">Kyungwon <b>Seo</b></span><span>한양대학교 화학공학과 이미징 기반 소재 지능 연구실</span></div></footer>
+
+</body>
+</html>

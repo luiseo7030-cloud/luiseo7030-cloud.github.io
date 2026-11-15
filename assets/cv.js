@@ -14,6 +14,10 @@ window.KW_CV = {
    "href": "https://scholar.google.co.kr/citations?user=RFV8QMsAAAAJ&hl=ko"
   },
   {
+   "label": "ORCID",
+   "href": "https://orcid.org/0009-0003-8812-0591"
+  },
+  {
    "label": "LinkedIn",
    "href": "https://www.linkedin.com/in/kyungwon-seo-1186982a5/"
   },
@@ -255,6 +259,425 @@ window.KW_CV = {
    "who": "KIChE",
    "items": [
     "1st Place out of 80 Participants"
+   ]
+  }
+ ],
+ "news": [
+  {
+   "date": "2026-09-29",
+   "tag": "paper",
+   "title": "New paper in Small",
+   "text": "Our collaborative work on morphology-stabilized CsPbBr3 quantum dot films with PVC-g-PMMA graft-copolymer encapsulation is out in Small (IF 12.1). Kyungwon carried out the AFM analysis. In collaboration with Prof. Jung Tae Park's team at Yonsei University.",
+   "links": [
+    {
+     "label": "DOI",
+     "href": "https://doi.org/10.1002/smll.76045"
+    },
+    {
+     "label": "Lab news",
+     "href": "https://www.hyosung-an.com/news"
+    }
+   ]
+  },
+  {
+   "date": "2026-09-22",
+   "tag": "paper",
+   "title": "New paper in Chemical Engineering Journal",
+   "text": "Our joint paper, \"Hierarchical dual-crosslinked alginate interlayer for structurally uniform thin-film composite nanofiltration membranes\", is out in Chemical Engineering Journal (IF 13.2). Made possible by close collaboration with Prof. Jong Suk Lee's group at Sogang University.",
+   "links": [
+    {
+     "label": "DOI",
+     "href": "https://doi.org/10.1016/j.cej.2026.182304"
+    },
+    {
+     "label": "Lab news",
+     "href": "https://www.hyosung-an.com/news"
+    }
+   ]
+  },
+  {
+   "date": "2026-09-01",
+   "tag": "lab",
+   "title": "A new chapter at Hanyang University",
+   "text": "The Morphology Intelligence Lab (Prof. Hyosung An) moved to the Department of Chemical Engineering, Hanyang University, Seoul. Kyungwon moves with the lab and continues research there.",
+   "links": [
+    {
+     "label": "Lab news",
+     "href": "https://www.hyosung-an.com/news"
+    }
+   ]
+  },
+  {
+   "date": "2026-07-29",
+   "tag": "paper",
+   "title": "New paper in Journal of Materials Chemistry A",
+   "text": "Competitive solvent coordination enables controlled crystallization for antisolvent-free perovskite solar cells. Out in J. Mater. Chem. A (IF 9.2), co-authored with Prof. Seulki Song's team at Chungnam National University.",
+   "links": [
+    {
+     "label": "DOI",
+     "href": "https://doi.org/10.1039/d6ta03812c"
+    },
+    {
+     "label": "Lab news",
+     "href": "https://www.hyosung-an.com/news"
+    }
+   ]
+  },
+  {
+   "date": "2026-04-15",
+   "tag": "patent",
+   "title": "Patent application published: 셀룰로오스를 이용한 수분증발기반 전기발전체",
+   "text": "Korean patent application 10-2024-0136497 (filed Oct 8, 2024 by Chonnam National University; inventors Hyosung An, Kyungwon Seo, Gwangpyo Gill and Chamin Kim) was published as KR 10-2026-0050581 A. A porous cellulose film between two electrodes generates electricity from asymmetric water evaporation.",
+   "links": [
+    {
+     "label": "Google Patents",
+     "href": "https://patents.google.com/patent/KR20260050581A/ko"
+    }
+   ]
+  },
+  {
+   "date": "2026-04",
+   "tag": "scholarship",
+   "title": "Jeollanamdo Institute for Talent & Lifelong Education Scholarship",
+   "minor": true
+  },
+  {
+   "date": "2026-01-22",
+   "tag": "press",
+   "star": true,
+   "title": "Featured in the news: 전남대 학부생, SCI 최상위 저널 연속 등재 '이례적 성과'",
+   "text": "Chonnam National University's official news featured Kyungwon's back-to-back papers in Chemical Engineering Journal and Small, highlighting the nanoscale property-mapping protocol he built with AFM and liquid-phase AFM. The story was picked up by six more outlets.",
+   "links": [
+    {
+     "label": "전남대뉴스",
+     "href": "https://today.jnu.ac.kr/WebApp/web/HOM/COM/Board/board.aspx?boardID=147&bbsMode=view&key=1210"
+    },
+    {
+     "label": "매일일보",
+     "href": "http://www.m-i.kr/news/articleView.html?idxno=1328461"
+    },
+    {
+     "label": "뉴스워커",
+     "href": "http://www.newsworker.co.kr/news/articleView.html?idxno=411368"
+    },
+    {
+     "label": "내외일보",
+     "href": "https://www.naewoeilbo.com/news/articleView.html?idxno=2295764"
+    },
+    {
+     "label": "누리일보",
+     "href": "https://nuriilbo.com/news/article.html?no=797669"
+    },
+    {
+     "label": "시사일보",
+     "href": "http://www.koreasisailbo.com/2113654"
+    },
+    {
+     "label": "제이앤엠뉴스",
+     "href": "https://www.jnmnews.com/news/article.html?no=617661"
+    },
+    {
+     "label": "교수신문",
+     "href": "http://www.kyosu.net/news/articleView.html?idxno=155776"
+    },
+    {
+     "label": "베리타스알파",
+     "href": "http://www.veritas-a.com/news/articleView.html?idxno=595230"
+    }
+   ]
+  },
+  {
+   "date": "2026-01-13",
+   "tag": "paper",
+   "title": "New paper in Chemical Engineering Journal",
+   "text": "Polymer penetration suppression to enhance gas separation in composite hollow fiber membranes, out in Chemical Engineering Journal (IF 13.2, JCR top 3%). Co-authored with Prof. Hyo Won Kim's team at KENTECH.",
+   "links": [
+    {
+     "label": "DOI",
+     "href": "https://doi.org/10.1016/j.cej.2026.172911"
+    },
+    {
+     "label": "Lab news",
+     "href": "https://www.hyosung-an.com/news"
+    }
+   ]
+  },
+  {
+   "date": "2025-12-11",
+   "tag": "paper",
+   "title": "Accepted in Small",
+   "text": "Our collaboration with Prof. Jin Woong Kim's team (SKKU) on mechanical-threshold-guided harvesting of microalgal therapeutics with designer nanovesicles was accepted in Small (IF 12.1, JCR top 7%). Kyungwon performed the liquid-phase AFM nanomechanics.",
+   "links": [
+    {
+     "label": "DOI",
+     "href": "https://doi.org/10.1002/smll.202511456"
+    },
+    {
+     "label": "Lab news",
+     "href": "https://www.hyosung-an.com/news"
+    }
+   ]
+  },
+  {
+   "date": "2025-11",
+   "tag": "scholarship",
+   "title": "KEPCO–KPX Scholarship (전남–전력거래소 인재장학생)",
+   "minor": true,
+   "links": [
+    {
+     "label": "Lab awards",
+     "href": "https://www.hyosung-an.com/awards"
+    }
+   ]
+  },
+  {
+   "date": "2025-09-01",
+   "tag": "award",
+   "title": "Best grade award (성적최우수상), 2025 spring semester",
+   "minor": true,
+   "certs": [
+    "assets/awards/2025-09-grade.jpg"
+   ],
+   "card": {
+    "t": "'25-1학기 성적최우수상"
+   }
+  },
+  {
+   "date": "2025-07-14",
+   "tag": "award",
+   "title": "Best Poster Presentation Award, KIChE",
+   "text": "Kyungwon's poster \"Seaweed-Based Hydrovoltaics for Eco-Friendly Electricity Generation\" won the Best Paper Presentation Award (poster) at the 2025 KIChE Korea–China Polymer Symposium, KIChE Polymer Division.",
+   "certs": [
+    "assets/awards/2025-07-kiche-poster.jpg"
+   ],
+   "card": {
+    "t": "'25 한국화학공학회 한-중 고분자 심포지엄 우수논문발표상"
+   }
+  },
+  {
+   "date": "2025-03-05",
+   "tag": "award",
+   "title": "Best grade award (성적최우수상), 2024 fall semester",
+   "minor": true,
+   "certs": [
+    "assets/awards/2025-03-grade.jpg"
+   ],
+   "card": {
+    "t": "'24-2학기 성적최우수상"
+   }
+  },
+  {
+   "date": "2025-02",
+   "tag": "scholarship",
+   "title": "H2 Korea Human Resources Scholarship",
+   "minor": true
+  },
+  {
+   "date": "2025-01",
+   "tag": "paper",
+   "star": true,
+   "title": "First SCI paper, in Carbohydrate Polymers",
+   "text": "Kyungwon's first journal article: a synergistic Laponite swollen-layer and heparin composite coating for antifouling and antithrombotic surfaces, in Carbohydrate Polymers 348, 122875 (IF 10.7). Liquid-phase AFM in collaboration with Dr. Jin Yoo's team at KIST.",
+   "links": [
+    {
+     "label": "DOI",
+     "href": "https://doi.org/10.1016/j.carbpol.2024.122875"
+    }
+   ]
+  },
+  {
+   "date": "2025-01",
+   "tag": "scholarship",
+   "title": "Neutinamu (느티나무) Scholarship, Chonnam National University",
+   "minor": true,
+   "links": [
+    {
+     "label": "Lab awards",
+     "href": "https://www.hyosung-an.com/awards"
+    }
+   ]
+  },
+  {
+   "date": "2024-11-08",
+   "tag": "press",
+   "star": true,
+   "title": "In the news: 전남대, 화학공학 창의설계 경진대회 휩쓸어",
+   "text": "Regional press covered the Ministerial Award won by team '다시만난전기' (advisor Prof. Hyosung An) for generating electricity from seaweed through asymmetric water evaporation. Kyungwon is pictured receiving the award.",
+   "links": [
+    {
+     "label": "무등뉴스",
+     "href": "https://www.mdns.co.kr/news/articleView.html?idxno=13056"
+    },
+    {
+     "label": "위키트리",
+     "href": "https://www.wikitree.co.kr/articles/998087"
+    },
+    {
+     "label": "데일리한국",
+     "href": "https://daily.hankooki.com/news/articleView.html?idxno=1145393"
+    },
+    {
+     "label": "베리타스알파",
+     "href": "http://www.veritas-a.com/news/articleView.html?idxno=528235"
+    },
+    {
+     "label": "뉴스워커",
+     "href": "http://www.newsworker.co.kr/news/articleView.html?idxno=355028"
+    },
+    {
+     "label": "브레이크뉴스",
+     "href": "http://www.breaknews.com/1069264"
+    }
+   ]
+  },
+  {
+   "date": "2024-10-16",
+   "tag": "award",
+   "star": true,
+   "title": "Ministerial Award (산업통상자원부 장관상): 1st of 153 teams",
+   "text": "As team leader and presenter, Kyungwon led '다시만난전기' to first place at the 2024 Chem-Frontier National Chemical Engineering Creative Design Competition (16th Chemical Industry Day, BEXCO Busan) with a hydrovoltaic generator driven by asymmetric evaporation. Team members: Kyungwon Seo, Chamin Kim, Seungjun Ha, Taegyu Jang and Seonghoon Jung.",
+   "links": [
+    {
+     "label": "Lab news",
+     "href": "https://www.hyosung-an.com/news"
+    },
+    {
+     "label": "Lab awards",
+     "href": "https://www.hyosung-an.com/awards"
+    },
+    {
+     "label": "KIChE 수상자 명단 (NICE 2024.12)",
+     "href": "https://www.kiche.or.kr/e-book/access/ecatalogt.php?callmode=&catimage=&eclang=ko&Dir=35&um=t&start=94"
+    },
+    {
+     "label": "KIChE 2024 추계 프로그램",
+     "href": "https://www.kiche.or.kr/e-book/access/ecatalogt.php?callmode=&catimage=&eclang=ko&Dir=33&um=t&start=56"
+    }
+   ],
+   "certs": [
+    "assets/awards/2024-10-motie-minister.jpg",
+    "assets/awards/2024-10-kiche-minister.jpg"
+   ],
+   "card": {
+    "t": "'24 Chem Frontier 화학공학 창의설계 경진대회 장관상",
+    "who": "다시만난전기 팀: 서경원, 김차민, 장태규, 정성훈, 하승준"
+   }
+  },
+  {
+   "date": "2024-09-09",
+   "tag": "award",
+   "title": "Model Student Award (모범상)",
+   "text": "Awarded by the Department of Petrochemical Materials Engineering for Kyungwon's dedication and service as the 2024 student association president.",
+   "certs": [
+    "assets/awards/2024-09-model-student.jpg"
+   ],
+   "card": {
+    "t": "'24 석유화학소재공학과 학생회장 모범상"
+   }
+  },
+  {
+   "date": "2024-09-09",
+   "tag": "award",
+   "minor": true,
+   "title": "Best grade award (성적최우수상), 2024 spring semester",
+   "certs": [
+    "assets/awards/2024-09-grade.jpg"
+   ],
+   "card": {
+    "t": "'24-1학기 성적최우수상"
+   }
+  },
+  {
+   "date": "2024-09-02",
+   "tag": "award",
+   "title": "Bronze Award, 2024 JNU Student Portfolio Competition (5th of 60)",
+   "minor": true,
+   "certs": [
+    "assets/awards/2024-09-portfolio.jpg"
+   ],
+   "card": {
+    "t": "'24 전남대학교 학생 포트폴리오 경진대회 동상"
+   }
+  },
+  {
+   "date": "2024-08-23",
+   "tag": "award",
+   "title": "Excellence Award, Gwangju LINC 3.0 RISE STAR Capstone Competition",
+   "text": "Kyungwon (team leader, presenter) and Chamin Kim won the Excellence Award (광주권 LINC3.0 협의회장상) for their kelp-based moisture-evaporation power generator.",
+   "links": [
+    {
+     "label": "Lab news",
+     "href": "https://www.hyosung-an.com/news"
+    }
+   ],
+   "certs": [
+    "assets/awards/2024-08-rise-star.jpg"
+   ],
+   "card": {
+    "t": "'24 광주권 캡스톤 RISE STAR 우수상",
+    "who": "다시만난전기 팀: 서경원, 김차민"
+   }
+  },
+  {
+   "date": "2024-07-12",
+   "tag": "award",
+   "title": "Grand Prize (대상), JNU Capstone Design Competition",
+   "text": "Team '다시만난전기', led and presented by Kyungwon with 김성수, 윤초영 and 조재홍, took first place out of 38 teams in the 2024 spring Capstone Design Competition of the JNU LINC 3.0 project group.",
+   "links": [
+    {
+     "label": "Lab news",
+     "href": "https://www.hyosung-an.com/news"
+    }
+   ],
+   "certs": [
+    "assets/awards/2024-07-jnu-capstone.jpg"
+   ],
+   "card": {
+    "t": "'24 전남대학교 캡스톤디자인 경진대회 대상",
+    "who": "다시만난전기 팀: 서경원, 김성수, 윤초영, 조재홍"
+   }
+  },
+  {
+   "date": "2024-04",
+   "tag": "award",
+   "star": true,
+   "title": "Excellent Image, Park Systems AFM Image Contest",
+   "text": "Kyungwon's AFM image was selected as an Excellent Image (우수 이미지) in the 2023 Park Systems AFM Image Contest, judged on scientific value, image quality and artistry."
+  },
+  {
+   "date": "2024-03",
+   "tag": "scholarship",
+   "title": "Grade-up Award and Educational Innovation Division Scholarship, JNU",
+   "minor": true
+  },
+  {
+   "date": "2024-02-02",
+   "tag": "award",
+   "title": "Grand Prize (대상), KIChE Workshop for Chemical Engineering Student Presidents",
+   "text": "Kyungwon won the grand prize (1st of 80) in the group discussion at the 2024 KIChE workshop for student association and club presidents of chemical engineering departments nationwide.",
+   "certs": [
+    "assets/awards/2024-02-kiche-workshop.jpg"
+   ],
+   "card": {
+    "t": "'24 화학공학과 학생회장 Workshop 분임토의 대상"
+   }
+  },
+  {
+   "date": "2024",
+   "tag": "lab",
+   "title": "Elected President of the Student Association, Dept. of Petrochemical Materials Engineering",
+   "minor": true
+  },
+  {
+   "date": "2023-01-02",
+   "tag": "lab",
+   "title": "Joined Prof. Hyosung An's lab as an undergraduate researcher",
+   "text": "Kyungwon joined the lab together with Boseung Choi and Choyoung Yoon.",
+   "links": [
+    {
+     "label": "Lab news",
+     "href": "https://www.hyosung-an.com/news"
+    }
    ]
   }
  ],
