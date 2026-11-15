@@ -13,7 +13,7 @@
 <script src="assets/cv.js"></script>
 <script src="assets/common.js"></script>
 <style>
-.stats{display:grid;grid-template-columns:repeat(var(--n,6),minmax(0,1fr));border:1px solid var(--line);border-radius:2px;background:var(--panel)}
+.stats{display:grid;grid-template-columns:repeat(var(--n,6),minmax(0,1fr));border:1px solid var(--line);border-radius:10px;background:var(--panel);overflow:hidden}
 @media (max-width:760px){.stats{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .stats div{padding:16px 10px;text-align:center;border-left:1px solid var(--line);display:flex;flex-direction:column;gap:6px}
 .stats div:first-child{border-left:0}
@@ -28,7 +28,7 @@
 .sec-h .cnt{font:500 15px/1 var(--display);color:var(--accent);letter-spacing:.06em}
 .yr{display:grid;grid-template-columns:110px minmax(0,1fr);gap:20px;align-items:start}
 @media (max-width:640px){.yr{grid-template-columns:minmax(0,1fr);gap:4px}}
-.yr>h3{font:600 40px/1 var(--display);color:var(--line);position:sticky;top:16px}
+.yr>h3{font:600 40px/1 var(--display);color:var(--line);position:sticky;top:84px}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .yr>h3{color:#3a3f48}}
 :root[data-theme="dark"] .yr>h3{color:#3a3f48}
 @media (max-width:640px){.yr>h3{position:static;font-size:30px;color:var(--accent)}}
@@ -58,9 +58,10 @@ ol.pubs.ms li{grid-template-columns:34px minmax(0,1fr) auto}
 .note{max-width:80ch}
 </style>
 
-<nav class="site-nav" aria-label="사이트 메뉴"><a class="logo" href="index.html">Kyungwon <b>Seo</b></a><ul><li><a href="index.html">Profile</a></li><li><a href="publications.html" aria-current="page">Publications</a></li><li><a href="afm-3d-viewer/">AFM 3D Viewer</a></li></ul></nav>
+<nav class="site-nav" aria-label="사이트 메뉴"><div class="nav-in"><a class="logo" href="index.html">Kyungwon <b>Seo</b></a><ul><li><a href="index.html">Profile</a></li><li><a href="publications.html" data-home aria-current="page">Publications</a></li><li><a href="afm-3d-viewer/">AFM 3D Viewer</a></li></ul></div></nav>
 <header class="page-band">
   <div class="band-inner">
+    <span class="eyebrow">Kyungwon Seo</span>
     <h1>Publications</h1>
   </div>
 </header>
@@ -74,12 +75,12 @@ ol.pubs.ms li{grid-template-columns:34px minmax(0,1fr) auto}
     <div id="years" style="display:flex;flex-direction:column;gap:20px"></div>
   </section>
 
-  <section class="sec" id="manuscripts">
+  <section class="sec" id="manuscripts" data-rv>
     <div class="sec-h"><h2>Manuscripts</h2><span class="cnt" id="n-ms"></span></div>
     <ol class="pubs ms" id="ms"></ol>
   </section>
 
-  <section class="sec" id="patents">
+  <section class="sec" id="patents" data-rv>
     <div class="sec-h"><h2>Patents</h2><span class="cnt" id="n-pat"></span></div>
     <ol class="pubs ms" id="pat"></ol>
   </section>
@@ -127,7 +128,7 @@ ol.pubs.ms li{grid-template-columns:34px minmax(0,1fr) auto}
 })();
 </script>
 
-<footer class="site-foot"><span class="mark">Kyungwon Seo</span><span>한양대학교 화학공학과 이미징 기반 소재 지능 연구실</span></footer>
+<footer class="site-foot"><div class="foot-in"><span class="mark">Kyungwon <b>Seo</b></span><span>한양대학교 화학공학과 이미징 기반 소재 지능 연구실</span></div></footer>
 
 </body>
 </html>
