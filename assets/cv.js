@@ -546,10 +546,6 @@ window.KW_CV = {
      "href": "https://www.hyosung-an.com/awards"
     },
     {
-     "label": "KIChE 수상자 명단 (NICE 2024.12)",
-     "href": "https://www.kiche.or.kr/e-book/access/ecatalogt.php?callmode=&catimage=&eclang=ko&Dir=35&um=t&start=94"
-    },
-    {
      "label": "KIChE 2024 추계 프로그램",
      "href": "https://www.kiche.or.kr/e-book/access/ecatalogt.php?callmode=&catimage=&eclang=ko&Dir=33&um=t&start=56"
     }
