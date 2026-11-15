@@ -140,14 +140,14 @@ window.KW_CV = {
   {
    "authors": "Hyosung An, Kyungwon Seo, Gwangpyo Gill, Chamin Kim",
    "title": "A moisture evaporation-based electric power generator using cellulose and a moisture evaporation-based electric power generation system using the same",
-   "ref": "Korea Patent 10-2024-0136497",
-   "status": "Application completed"
+   "ref": "Korean Patent Application 10-2024-0136497 (Publication 10-2026-0050581)",
+   "status": "Published"
   },
   {
    "authors": "Hyosung An, Kyungwon Seo",
    "title": "Electrodes for hydrovoltaic electricity generators using seaweed, their manufacturing methods, and hydrovoltaic electricity generators using them",
-   "ref": "Korea Patent",
-   "status": "Application completed"
+   "ref": "Korean Patent Application",
+   "status": "Filed"
   }
  ],
  "awards": [
@@ -343,7 +343,7 @@ window.KW_CV = {
    "tag": "press",
    "star": true,
    "title": "Featured in the news: 전남대 학부생, SCI 최상위 저널 연속 등재 '이례적 성과'",
-   "text": "Chonnam National University's official news featured Kyungwon's back-to-back papers in Chemical Engineering Journal and Small, highlighting the nanoscale property-mapping protocol Kyungwon built with AFM and liquid-phase AFM. The story was picked up by 8 more outlets.",
+   "text": "Chonnam National University's official news featured Kyungwon's back-to-back papers in Chemical Engineering Journal and Small, highlighting the nanoscale property-mapping protocol Kyungwon built with AFM and liquid-phase AFM. The story was picked up by 7 more outlets.",
    "links": [
     {
      "label": "전남대뉴스",
@@ -356,10 +356,6 @@ window.KW_CV = {
     {
      "label": "뉴스워커",
      "href": "http://www.newsworker.co.kr/news/articleView.html?idxno=411368"
-    },
-    {
-     "label": "내외일보",
-     "href": "https://www.naewoeilbo.com/news/articleView.html?idxno=2295764"
     },
     {
      "label": "누리일보",
