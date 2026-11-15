@@ -27,7 +27,7 @@ window.KW_CV = {
   }
  ],
  "tagline": "AFM nanomechanics of soft materials",
- "summary_ko": "액상·대기 AFM 으로 소프트 소재의 나노 구조와 물성을 측정하고, 전자현미경으로 3D 나노 구조를 분석합니다.",
+ "summary_ko": "액상·대기 AFM 으로 소프트 소재의 나노 구조와 물성을 측정하고,\n전자현미경으로 3D 나노 구조를 분석합니다.",
  "research": [
   {
    "t": "Nanoscale & Liquid Phase AFM",
