@@ -261,6 +261,18 @@ window.KW_CV = {
  ],
  "news": [
   {
+   "date": "2027-03-01",
+   "tag": "lab",
+   "title": "A new chapter at Hanyang University",
+   "text": "Kyungwon begins graduate study in the Department of Chemical Engineering, Hanyang University, Seoul, continuing research in the Morphology Intelligence Lab (Prof. Hyosung An), which moved to Hanyang in September 2026.",
+   "links": [
+    {
+     "label": "Lab news",
+     "href": "https://www.hyosung-an.com/news"
+    }
+   ]
+  },
+  {
    "date": "2026-09-29",
    "tag": "paper",
    "title": "New paper in Small",
@@ -286,18 +298,6 @@ window.KW_CV = {
      "label": "DOI",
      "href": "https://doi.org/10.1016/j.cej.2026.182304"
     },
-    {
-     "label": "Lab news",
-     "href": "https://www.hyosung-an.com/news"
-    }
-   ]
-  },
-  {
-   "date": "2026-09-01",
-   "tag": "lab",
-   "title": "A new chapter at Hanyang University",
-   "text": "The Morphology Intelligence Lab (Prof. Hyosung An) moved to the Department of Chemical Engineering, Hanyang University, Seoul. Kyungwon moves with the lab and continues research there.",
-   "links": [
     {
      "label": "Lab news",
      "href": "https://www.hyosung-an.com/news"
@@ -343,7 +343,7 @@ window.KW_CV = {
    "tag": "press",
    "star": true,
    "title": "Featured in the news: 전남대 학부생, SCI 최상위 저널 연속 등재 '이례적 성과'",
-   "text": "Chonnam National University's official news featured Kyungwon's back-to-back papers in Chemical Engineering Journal and Small, highlighting the nanoscale property-mapping protocol he built with AFM and liquid-phase AFM. The story was picked up by six more outlets.",
+   "text": "Chonnam National University's official news featured Kyungwon's back-to-back papers in Chemical Engineering Journal and Small, highlighting the nanoscale property-mapping protocol Kyungwon built with AFM and liquid-phase AFM. The story was picked up by 8 more outlets.",
    "links": [
     {
      "label": "전남대뉴스",
