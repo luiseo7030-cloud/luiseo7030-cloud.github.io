@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%230e1114%27/%3E%3Ctext x=%2716%27 y=%2722%27 font-family=%27monospace%27 font-size=%2717%27 font-weight=%27700%27 text-anchor=%27middle%27 fill=%27%23e0a030%27%3EK%3C/text%3E%3C/svg%3E">
 </head>
 <body>
 <title>Kyungwon Seo</title>
@@ -213,7 +214,7 @@ ul.tl>li.star .w{color:var(--accent);font-weight:600}
   const orgs = C.orgs.slice().sort((a, b) => ko(a.name_ko, b.name_ko));
   const sumOf = f => orgs.reduce((n, o) => n + o.people.reduce((m, p) => m + (p[f] || 0), 0), 0);
   const on = sumOf("ongoing"), dn = sumOf("completed");
-  $("co-n").textContent = on + dn ? `${orgs.length}개 기관 · 공동연구 ${on + dn}건 (진행중 ${on}, 완료 ${dn})` : "";
+  $("co-n").textContent = on + dn ? `${orgs.length}개 기관 · 공동연구 ${on + dn}건 (진행중 ${on}, 완료 ${dn})` : `${orgs.length}개 기관`;
   const groups = [{ type: "all", label: "All" }, ...C.groups.filter(g => orgs.some(o => o.type === g.type))];
   const card = o => `<div class="org"><h4>${esc(o.name_ko)}</h4><span class="en">${esc(o.name_en)}</span><ul>${
     o.people.slice().sort((a, b) => ko(a.pi, b.pi)).map(p => `<li><span class="pi">${esc(p.pi)} ${esc(p.title)}</span><span class="cnt">${
@@ -232,6 +233,7 @@ ul.tl>li.star .w{color:var(--accent);font-weight:600}
 </script>
 
 <footer class="site-foot"><div class="foot-in"><span class="mark">Kyungwon <b>Seo</b></span><span>한양대학교 화학공학과 이미징 기반 소재 지능 연구실</span></div></footer>
+<script src="assets/site.js"></script>
 
 </body>
 </html>

@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%230e1114%27/%3E%3Ctext x=%2716%27 y=%2722%27 font-family=%27monospace%27 font-size=%2717%27 font-weight=%27700%27 text-anchor=%27middle%27 fill=%27%23e0a030%27%3EK%3C/text%3E%3C/svg%3E">
 </head>
 <body>
 <title>Publications</title>
@@ -13,11 +14,11 @@
 <script src="assets/cv.js"></script>
 <script src="assets/common.js"></script>
 <style>
-.stats{display:grid;grid-template-columns:repeat(var(--n,6),minmax(0,1fr));border:1px solid var(--line);border-radius:10px;background:var(--panel);overflow:hidden}
-@media (max-width:760px){.stats{grid-template-columns:repeat(3,minmax(0,1fr))}}
-.stats div{padding:16px 10px;text-align:center;border-left:1px solid var(--line);display:flex;flex-direction:column;gap:6px}
-.stats div:first-child{border-left:0}
-@media (max-width:760px){.stats div:nth-child(4){border-left:0}.stats div:nth-child(n+4){border-top:1px solid var(--line)}}
+/* boxes wrap and stretch to fill each row, so any count (5 public, 6 with manuscripts) leaves no empty cell;
+   dividers are drawn by each box, clipped at the outer edge by the rounded frame */
+.stats{display:flex;flex-wrap:wrap;border:1px solid var(--line);border-radius:10px;background:var(--panel);overflow:hidden}
+.stats div{flex:1 1 110px;padding:16px 10px;text-align:center;display:flex;flex-direction:column;gap:6px;
+  border-left:1px solid var(--line);border-top:1px solid var(--line);margin:-1px 0 0 -1px}
 .stats b{font:600 34px/1 var(--display);color:var(--fg);font-variant-numeric:tabular-nums}
 .stats span{font-size:12px;color:var(--muted);letter-spacing:.02em}
 .stats .scholar b{color:var(--accent)}
@@ -129,6 +130,7 @@ ol.pubs.ms li{grid-template-columns:34px minmax(0,1fr) auto}
 </script>
 
 <footer class="site-foot"><div class="foot-in"><span class="mark">Kyungwon <b>Seo</b></span><span>한양대학교 화학공학과 이미징 기반 소재 지능 연구실</span></div></footer>
+<script src="assets/site.js"></script>
 
 </body>
 </html>

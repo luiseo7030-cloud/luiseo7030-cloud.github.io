@@ -41,24 +41,25 @@ h1,h2,h3{text-wrap:balance;margin:0}
 .site-nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(14,17,20,.92);color:var(--band-fg);
   -webkit-backdrop-filter:saturate(1.4) blur(10px);backdrop-filter:saturate(1.4) blur(10px);
   border-bottom:1px solid rgba(255,255,255,.08);transition:background .25s,border-color .25s}
-.site-nav .nav-in{max-width:var(--max);margin:0 auto;height:60px;display:flex;align-items:center;justify-content:space-between;gap:16px;
+.site-nav .nav-in{max-width:var(--max);margin:0 auto;min-height:60px;padding-block:8px;display:flex;align-items:center;justify-content:space-between;gap:16px;
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-.site-nav.over{position:fixed;inset:env(safe-area-inset-top,0px) 0 auto 0;background:transparent;border-bottom-color:transparent;
+/* over the home hero: faintly tinted rather than fully transparent, so the white menu stays readable
+   even where site.js has not (yet) switched it to solid over a light section */
+.site-nav.over{position:fixed;inset:env(safe-area-inset-top,0px) 0 auto 0;background:rgba(14,17,20,.6);border-bottom-color:transparent;
   -webkit-backdrop-filter:none;backdrop-filter:none}
 .site-nav.over.solid{background:rgba(14,17,20,.92);border-bottom-color:rgba(255,255,255,.08);
   -webkit-backdrop-filter:saturate(1.4) blur(10px);backdrop-filter:saturate(1.4) blur(10px)}
 .site-nav .logo{font:600 15px/1 var(--mono);letter-spacing:.04em;color:#fff;text-decoration:none;white-space:nowrap}
 .site-nav .logo b{color:var(--gold);font-weight:600}
-.site-nav ul{list-style:none;margin:0;padding:0;display:flex;align-items:center;gap:2px;min-width:0}
+.site-nav ul{list-style:none;margin:0;padding:0;display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:2px;min-width:0}
 .site-nav ul a{display:block;font:500 13.5px/1 var(--sans);color:rgba(255,255,255,.72);text-decoration:none;white-space:nowrap;
   padding:9px 12px;border-radius:999px;transition:color .15s,background .15s}
 .site-nav ul a:hover{color:#fff;background:rgba(255,255,255,.08)}
 .site-nav ul a[aria-current]{color:#16181b;background:var(--gold);font-weight:600}
 .scroll-bar{position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--gold);transform-origin:0 50%;transform:scaleX(0);pointer-events:none}
 @media (max-width:680px){
-  .site-nav .nav-in{height:auto;flex-direction:column;align-items:stretch;gap:6px;padding-block:10px 8px}
-  .site-nav ul{overflow-x:auto;scrollbar-width:none;margin-inline:-6px}
-  .site-nav ul::-webkit-scrollbar{display:none}
+  .site-nav .nav-in{flex-direction:column;align-items:stretch;gap:6px;padding-block:10px 8px}
+  .site-nav ul{justify-content:flex-start;margin-inline:-6px}   /* wraps to a second line: every item stays visible */
   .site-nav ul a{font-size:13px;padding:8px 11px}}
 
 /* ---------- page banner (sub pages) ---------- */

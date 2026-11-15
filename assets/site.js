@@ -12,15 +12,13 @@
   top.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
   top.addEventListener("click", () => scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" }));
   d.body.appendChild(top);
-  let ticking = false;
-  function onScroll(){
-    ticking = false;
+  function onScroll(){                              // cheap enough to run on every scroll event (no rAF: see reveal)
     const y = scrollY, h = root.scrollHeight - innerHeight;
     bar.style.transform = `scaleX(${h > 0 ? Math.min(1, y / h) : 0})`;
     if (nav) nav.classList.toggle("solid", y > 24);
     top.classList.toggle("show", y > 640);
   }
-  addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
   /* scroll reveal: [data-rv] fades up; [data-rv-kids] staggers its children.
@@ -30,16 +28,26 @@
     const targets = [];
     d.querySelectorAll("[data-rv]").forEach(el => targets.push(el));
     d.querySelectorAll("[data-rv-kids]").forEach(g => [...g.children].forEach((el, i) => { el.style.setProperty("--i", Math.min(i, 8)); targets.push(el); }));
-    const io = new IntersectionObserver(entries => entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      e.target.classList.remove("rv-pre"); io.unobserve(e.target);
-      setTimeout(() => e.target.classList.remove("rv-on"), 1400);
-    }), { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
-    targets.forEach(el => {
-      if (el.getBoundingClientRect().top < innerHeight * 0.92) return;
-      el.classList.add("rv-pre");
-      requestAnimationFrame(() => { el.classList.add("rv-on"); io.observe(el); });
-    });
+    /* show one element: drop the hidden state, and after the fade make sure it really ended
+       (a paused animation timeline, e.g. a hidden window, would otherwise leave it at opacity 0) */
+    const show = el => {
+      el.classList.remove("rv-pre"); io.unobserve(el);
+      setTimeout(() => { el.classList.remove("rv-on"); el.getAnimations().forEach(a => a.finish()); }, d.hidden ? 0 : 1400);
+    };
+    const io = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) show(e.target); }),
+      { rootMargin: "0px 0px -8% 0px", threshold: 0 });   // 0: very tall blocks still fire
+    /* no requestAnimationFrame here: it never fires in a background tab, which left blocks hidden */
+    const pre = targets.filter(el => el.getBoundingClientRect().top >= innerHeight * 0.92);
+    pre.forEach(el => el.classList.add("rv-pre"));
+    void d.body.offsetHeight;                       // commit the hidden state before the transition class
+    pre.forEach(el => { el.classList.add("rv-on"); io.observe(el); });
+    /* safety net: whatever has scrolled past (anchor jump, fast scroll, find-in-page) is shown */
+    const sweep = () => d.querySelectorAll(".rv-pre").forEach(el => { if (el.getBoundingClientRect().top < innerHeight) show(el); });
+    addEventListener("scroll", sweep, { passive: true });
+    /* scroll events and IntersectionObserver both pause while a tab is hidden; a timer still runs */
+    const tick = setInterval(() => { sweep(); if (!d.querySelector(".rv-pre")) clearInterval(tick); }, 400);
+    addEventListener("hashchange", sweep);
+    addEventListener("beforeprint", () => d.querySelectorAll(".rv-pre").forEach(show));
   }
   reveal();
 
