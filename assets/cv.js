@@ -39,13 +39,10 @@ window.KW_CV = {
   }
  ],
  "keywords": [
-  "AFM",
   "Liquid-phase AFM",
-  "Force–distance mapping",
-  "LFM",
-  "Hydrogels",
-  "Membranes",
-  "TEM / 3D"
+  "TEM Tomography",
+  "X-ray CT",
+  "SEM"
  ],
  "scholar": {
   "as_of": "2026-11-02",
