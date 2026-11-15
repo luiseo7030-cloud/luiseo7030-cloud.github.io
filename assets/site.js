@@ -51,6 +51,18 @@
   }
   reveal();
 
+  /* #anchor links to blocks that the page script draws (e.g. research.html#area-3): the browser looks for the
+     target before it exists, so jump there once everything is drawn (this script runs last) */
+  function toHash(){
+    const id = decodeURIComponent(location.hash.slice(1)), el = id && d.getElementById(id);
+    if (!el) return;
+    /* show the target first: its fade-up offset (22 px) would otherwise leave it under the menu once it settles */
+    [el, ...el.querySelectorAll(".rv-pre")].forEach(x => { x.classList.remove("rv-pre", "rv-on"); x.getAnimations().forEach(a => a.finish()); });
+    el.scrollIntoView({ behavior: "instant", block: "start" });
+    dispatchEvent(new Event("scroll"));             // reveal's sweep shows whatever is now on screen
+  }
+  if (location.hash) { toHash(); addEventListener("load", toHash, { once: true }); }   // again after fonts/images settle
+
   /* highlight the menu item for the section in view (home page sections) */
   const spy = [...d.querySelectorAll('.site-nav a[data-spy]')];
   if (spy.length && "IntersectionObserver" in window) {

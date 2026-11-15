@@ -26,6 +26,7 @@
 
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:calc(64px + env(safe-area-inset-top,0px))}
+@media (max-width:680px){html{scroll-padding-top:calc(112px + env(safe-area-inset-top,0px))}}   /* two-line menu on phones */
 body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.65 var(--sans)}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--band)}
 a{color:var(--link)}

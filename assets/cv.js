@@ -28,15 +28,104 @@ window.KW_CV = {
  ],
  "tagline": "AFM nanomechanics of soft materials",
  "summary_ko": "액상·대기 AFM 으로 소프트 소재의 나노 구조와 물성을 측정하고,\n전자현미경으로 3D 나노 구조를 분석합니다.",
+ "research_intro": "Measuring how soft materials are built and how they behave at the nanoscale, in air and in liquid, and turning microscopy images into numbers.",
  "research": [
   {
+   "icon": "afm",
    "t": "Nanoscale & Liquid Phase AFM",
-   "d": "Imaging and physical-property analysis of soft materials: force–distance mapping, LFM, phase and NCM imaging, KPFM, EFM, C-AFM and pcAFM, in-situ and liquid-phase measurement."
+   "d": "Imaging and physical-property analysis of soft materials: force–distance mapping, LFM, phase and NCM imaging, KPFM, EFM, C-AFM and pcAFM, in-situ and liquid-phase measurement.",
+   "ko": "대기와 액상에서 AFM 으로 소프트 소재의 나노 구조와 기계적·전기적 물성을 측정합니다. 수화된 고분자 네트워크, 분리막, 생체 나노소포체처럼 마르면 변하는 시료를 실제 환경에서 봅니다.",
+   "tags": [
+    "Liquid-phase AFM",
+    "Force–distance mapping",
+    "LFM",
+    "KPFM · EFM",
+    "C-AFM · pcAFM",
+    "In-situ"
+   ],
+   "related": [
+    {
+     "label": "Small 2026 · microalgal nanovesicles",
+     "href": "https://doi.org/10.1002/smll.202511456"
+    },
+    {
+     "label": "Carbohydr. Polym. 2025 · Laponite–heparin coating",
+     "href": "https://doi.org/10.1016/j.carbpol.2024.122875"
+    },
+    {
+     "label": "Chem. Eng. J. 2026 · alginate interlayer membranes",
+     "href": "https://doi.org/10.1016/j.cej.2026.182304"
+    },
+    {
+     "label": "Small 2026 · CsPbBr3 QD films",
+     "href": "https://doi.org/10.1002/smll.76045"
+    },
+    {
+     "label": "Chem. Eng. J. 2026 · hollow fiber membranes",
+     "href": "https://doi.org/10.1016/j.cej.2026.172911"
+    }
+   ]
   },
   {
+   "icon": "cube",
    "t": "Electron Microscopy & 3D",
-   "d": "Electron microscopy imaging and 3D nanoscale analysis of composite and porous structures: TEM tomography, X-ray CT, stereo-SEM 3D reconstruction from tilted images, and optical-microscopy focus stacking."
+   "d": "Electron microscopy imaging and 3D nanoscale analysis of composite and porous structures: TEM tomography, X-ray CT, stereo-SEM 3D reconstruction from tilted images, and optical-microscopy focus stacking.",
+   "ko": "TEM 토모그래피, X-ray CT, 각도별 SEM, 광학현미경 초점 합성으로 복합재와 다공성 구조를 3차원으로 재구성하고 분석합니다.",
+   "tags": [
+    "TEM tomography",
+    "X-ray CT",
+    "Stereo-SEM",
+    "OM focus stacking"
+   ],
+   "related": []
+  },
+  {
+   "icon": "energy",
+   "t": "Hydrovoltaic Energy Harvesting",
+   "d": "Evaporation-driven electricity from seaweed and cellulose: electrodes are engineered so that water evaporates asymmetrically, and the resulting potential difference generates power.",
+   "ko": "해조류와 셀룰로오스로 만든 전극에서 수분이 비대칭으로 증발할 때 생기는 전위차로 전기를 만드는 하이드로볼타익 발전 소자를 연구합니다.",
+   "tags": [
+    "Seaweed electrodes",
+    "Cellulose films",
+    "Asymmetric evaporation"
+   ],
+   "related": [
+    {
+     "label": "2 Korean patent applications",
+     "href": "publications.html#patents"
+    },
+    {
+     "label": "2024 Ministerial Award, 1st of 153 teams",
+     "href": "awards.html"
+    },
+    {
+     "label": "2025 KIChE best poster: Seaweed-Based Hydrovoltaics",
+     "href": "awards.html"
+    }
+   ]
+  },
+  {
+   "icon": "grid",
+   "t": "Quantitative Image Analysis",
+   "d": "Turning microscopy images into numbers with Fiji/ImageJ and StarDist: segmentation, size and shape statistics, roughness, and spatial heterogeneity within a sample.",
+   "ko": "Fiji/ImageJ 와 StarDist 로 현미경 이미지를 분할하고, 크기·형태 분포, 거칠기, 시료 안의 공간적 불균일성을 정량화합니다.",
+   "tags": [
+    "Fiji / ImageJ",
+    "StarDist",
+    "Roughness",
+    "Spatial heterogeneity"
+   ],
+   "related": []
   }
+ ],
+ "materials": [
+  "Hydrogels",
+  "Polymer membranes (polyamide, Nafion, hollow fiber, MOF)",
+  "Cellulose & CNC",
+  "Perovskites & quantum dots",
+  "MXene",
+  "Nanovesicles",
+  "Covalent adaptable networks"
  ],
  "keywords": [
   "Liquid-phase AFM",
