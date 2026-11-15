@@ -31,7 +31,7 @@ window.KW_CV = {
  "research": [
   {
    "t": "Nanoscale & Liquid Phase AFM",
-   "d": "Imaging and physical-property analysis of soft materials: force–distance mapping, LFM, phase and NCM imaging, in-situ and liquid-phase measurement."
+   "d": "Imaging and physical-property analysis of soft materials: force–distance mapping, LFM, phase and NCM imaging, KPFM, EFM, C-AFM and pcAFM, in-situ and liquid-phase measurement."
   },
   {
    "t": "Electron Microscopy & 3D",
