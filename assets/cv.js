@@ -35,7 +35,7 @@ window.KW_CV = {
   },
   {
    "t": "Electron Microscopy & 3D",
-   "d": "Electron microscopy imaging and 3D nanoscale analysis of composite and porous structures."
+   "d": "Electron microscopy imaging and 3D nanoscale analysis of composite and porous structures: TEM tomography, X-ray CT, stereo-SEM 3D reconstruction from tilted images, and optical-microscopy focus stacking."
   }
  ],
  "keywords": [
