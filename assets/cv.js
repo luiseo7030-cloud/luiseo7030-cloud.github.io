@@ -253,17 +253,27 @@ window.KW_CV = {
   {
    "when": "2025.09",
    "what": "Best grade award, Petrochemical Materials Engineering",
-   "who": "Chonnam National University"
+   "who": "Chonnam National University",
+   "items": [
+    "2025 spring semester"
+   ]
   },
   {
    "when": "2025.07",
-   "what": "Best Poster Presentation Award",
-   "who": "The Korean Institute of Chemical Engineers (KIChE)"
+   "what": "Best Paper Presentation Award (Poster)",
+   "who": "KIChE Polymer Division",
+   "items": [
+    "2025 KIChE Korea–China Polymer Symposium",
+    "Seaweed-Based Hydrovoltaics for Eco-Friendly Electricity Generation"
+   ]
   },
   {
    "when": "2025.03",
    "what": "Best grade award, Petrochemical Materials Engineering",
-   "who": "Chonnam National University"
+   "who": "Chonnam National University",
+   "items": [
+    "2024 fall semester"
+   ]
   },
   {
    "when": "2025.02",
@@ -283,19 +293,33 @@ window.KW_CV = {
    "items": [
     "Team Leader, Presenter",
     "1st Place out of 153 Teams",
-    "National Chemical Engineering Creative Design Competition, 16th Chemical Industry Day",
+    "2024 Chem Frontier Chemical Engineering Creative Design Competition (advanced track), 16th Chemical Industry Day",
     "Development of Hydrovoltaic Electricity Generator by Asymmetric Evaporation"
    ]
   },
   {
    "when": "2024.09",
    "what": "Best grade award, Petrochemical Materials Engineering",
-   "who": "Chonnam National University"
+   "who": "Chonnam National University",
+   "items": [
+    "2024 spring semester"
+   ]
   },
   {
    "when": "2024.09",
-   "what": "Model Student Award for Academic Attitude and Conduct",
-   "who": "Chonnam National University"
+   "what": "Model Student Award",
+   "who": "Department of Petrochemical Materials Engineering, Chonnam National University",
+   "items": [
+    "For service as 2024 student association president"
+   ]
+  },
+  {
+   "when": "2024.09",
+   "what": "Bronze Award, 2024 Student Portfolio Competition",
+   "who": "Engineering Education Innovation Center, Chonnam National University",
+   "items": [
+    "5th Place out of 60 Participants"
+   ]
   },
   {
    "when": "2024.08",
@@ -307,17 +331,9 @@ window.KW_CV = {
    ]
   },
   {
-   "when": "2024.08",
-   "what": "Bronze Award, Student Portfolio Competition",
-   "who": "Chonnam National University",
-   "items": [
-    "5th Place out of 60 Participants"
-   ]
-  },
-  {
    "when": "2024.07",
-   "what": "1st Place Winner, Capstone Design Competition",
-   "who": "Chonnam National University",
+   "what": "Grand Prize, 2024 Spring Capstone Design Competition",
+   "who": "Chonnam National University LINC 3.0",
    "items": [
     "Team Leader, Presenter",
     "1st Place out of 38 Teams"
@@ -325,7 +341,7 @@ window.KW_CV = {
   },
   {
    "when": "2024.04",
-   "what": "Best Image Competition Winner, Park Systems AFM Image Contest",
+   "what": "Excellent Image, 2023 Park Systems AFM Image Contest",
    "who": "Park Systems",
    "star": true
   },
@@ -341,7 +357,7 @@ window.KW_CV = {
   },
   {
    "when": "2024.02",
-   "what": "1st Place Winner, Workshop Discussion for Chemical Engineering Student Presidents",
+   "what": "Grand Prize, Workshop Discussion for Chemical Engineering Student Presidents",
    "who": "KIChE",
    "items": [
     "1st Place out of 80 Participants"
@@ -527,7 +543,7 @@ window.KW_CV = {
   {
    "date": "2025-07-14",
    "tag": "award",
-   "title": "Best Poster Presentation Award, KIChE",
+   "title": "Best Paper Presentation Award (Poster), KIChE",
    "text": "Kyungwon's poster \"Seaweed-Based Hydrovoltaics for Eco-Friendly Electricity Generation\" won the Best Paper Presentation Award (poster) at the 2025 KIChE Korea–China Polymer Symposium, KIChE Polymer Division.",
    "certs": [
     "assets/awards/2025-07-kiche-poster.jpg"
