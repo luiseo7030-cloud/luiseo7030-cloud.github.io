@@ -146,6 +146,50 @@ window.KW_CV = {
    "license_url": "https://creativecommons.org/licenses/by/4.0/"
   },
   {
+   "img": "assets/gallery/cej-2026-alginate-fig4.jpg",
+   "w": 1600,
+   "h": 1745,
+   "area": 1,
+   "t": "Interlayer stiffness, dry and wet",
+   "d": "AFM force mapping of alginate interlayers in nanofiltration membranes: 10 × 10 stiffness maps over 1 × 1 µm for four alginate compositions, dry and in water, with their stiffness distributions.",
+   "cite": "H. J. Lee, M. S. Seong, K. Seo et al., Chem. Eng. J. 550, 182304 (2026), Fig. 4",
+   "doi": "10.1016/j.cej.2026.182304",
+   "license": "© 2026 Elsevier B.V. All rights reserved."
+  },
+  {
+   "img": "assets/gallery/cej-2026-alginate-figS11.jpg",
+   "w": 1021,
+   "h": 967,
+   "area": 1,
+   "t": "Interlayer swelling in water",
+   "d": "AFM step-height measurement of the same interlayers in air and after 24 h in water: height images taken at the same spot and line profiles show how much each layer swells.",
+   "cite": "H. J. Lee, M. S. Seong, K. Seo et al., Chem. Eng. J. 550, 182304 (2026), Supplementary Fig. S11",
+   "doi": "10.1016/j.cej.2026.182304",
+   "license": "© 2026 Elsevier B.V. All rights reserved."
+  },
+  {
+   "img": "assets/gallery/cej-2026-hf-figS8.jpg",
+   "w": 1568,
+   "h": 1719,
+   "area": 1,
+   "t": "Hollow-fiber membrane roughness",
+   "d": "AFM topography of a ceramic hollow-fiber substrate and of coated membranes made with and without air injection, with height distributions and roughness. The air-assisted coating gives a smoother film.",
+   "cite": "N. G. Lim, K. Seo, H. An, H. W. Kim, Chem. Eng. J. 529, 172911 (2026), Supplementary Fig. S8",
+   "doi": "10.1016/j.cej.2026.172911",
+   "license": "© 2026 Elsevier B.V. All rights reserved."
+  },
+  {
+   "img": "assets/gallery/small-2025-fig5.jpg",
+   "w": 1367,
+   "h": 1276,
+   "area": 1,
+   "t": "Microalgae stiffness in water",
+   "d": "Liquid-phase AFM nanoindentation of four microalgae species: topography, 10 × 10 stiffness maps, stiffness distributions, force–indentation curves with Hertz fits, and Young's modulus.",
+   "cite": "H. Baek, S. Ruw, K. Seo et al., Small 22, e11456 (2026), Fig. 5",
+   "doi": "10.1002/smll.202511456",
+   "license": "© 2025 Wiley-VCH GmbH. All rights reserved."
+  },
+  {
    "img": "assets/gallery/carbpol-2025-fig3.jpg",
    "w": 1600,
    "h": 1340,
@@ -153,6 +197,18 @@ window.KW_CV = {
    "t": "Coatings in air and in water",
    "d": "Liquid-phase AFM of Laponite–heparin layer-by-layer coatings: 3D topography in air and in water, with roughness, thickness and apparent modulus. The layers swell and soften in water.",
    "cite": "S. Y. Jang et al., Carbohydr. Polym. 348, 122875 (2025), Fig. 3",
+   "doi": "10.1016/j.carbpol.2024.122875",
+   "license": "CC BY-NC-ND 4.0",
+   "license_url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+  },
+  {
+   "img": "assets/gallery/carbpol-2025-figS1.jpg",
+   "w": 1128,
+   "h": 469,
+   "area": 1,
+   "t": "Force curves in air and in water",
+   "d": "Force mapping at nine points of the same coating, in air and in water: height maps with the measured grid, and the force–indentation curve from each point.",
+   "cite": "S. Y. Jang et al., Carbohydr. Polym. 348, 122875 (2025), Supplementary Fig. S1",
    "doi": "10.1016/j.carbpol.2024.122875",
    "license": "CC BY-NC-ND 4.0",
    "license_url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
