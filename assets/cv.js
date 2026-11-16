@@ -99,7 +99,7 @@ window.KW_CV = {
      "href": "awards.html"
     },
     {
-     "label": "2025 KIChE best poster: Seaweed-Based Hydrovoltaics",
+     "label": "2025 KIChE Best Paper Presentation Award (Poster)",
      "href": "awards.html"
     }
    ]

@@ -20,9 +20,9 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="assets/site.css?v=f1b9d655">
-<script src="assets/cv.js?v=f1b9d655"></script>
-<script src="assets/common.js?v=f1b9d655"></script>
+<link rel="stylesheet" href="assets/site.css?v=35810cae">
+<script src="assets/cv.js?v=35810cae"></script>
+<script src="assets/common.js?v=35810cae"></script>
 <style>
 /* numbered research-area cards (icon, number, title, English + Korean text, tags, related work) */
 .areas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
@@ -82,6 +82,14 @@
     grid: svg('<rect x="3.5" y="3.5" width="17" height="17" rx="2"/><circle cx="9" cy="9" r="2"/><circle cx="15.5" cy="14.5" r="2.5"/><circle cx="8.5" cy="16" r="1.3"/>')
   };
   $("intro").textContent = cv.research_intro || "";
+  /* related papers in publication order, newest first: dates come from the paper items in cv.news (by DOI);
+     links that are not papers (patents, awards) keep their place after the papers */
+  const pubDate = {};
+  (cv.news || []).filter(n => n.tag === "paper").forEach(n => (n.links || []).forEach(l => {
+    const m = /doi\.org\/(.+)$/i.exec(l.href); if (m) pubDate[m[1].toLowerCase()] = n.date; }));
+  const dateOf = l => { const m = /doi\.org\/(.+)$/i.exec(l.href); return m ? pubDate[m[1].toLowerCase()] || "" : ""; };
+  cv.research.forEach(r => { if (r.related) r.related = r.related.map((l, i) => ({ l, i, d: dateOf(l) }))
+    .sort((a, b) => (b.d > a.d) - (b.d < a.d) || (!a.d - !b.d) || a.i - b.i).map(x => x.l); });
   $("areas").innerHTML = cv.research.map((r, i) => `<article class="area" id="area-${i + 1}">
     <span class="ic">${ICON[r.icon] || ICON.grid}</span>
     <span class="n">${String(i + 1).padStart(2, "0")}</span>
@@ -100,7 +108,7 @@
 </script>
 
 <footer class="site-foot"><div class="foot-in"><span class="mark">Kyungwon <b>Seo</b></span><span>한양대학교 화학공학과 이미징 기반 소재 지능 연구실</span></div></footer>
-<script src="assets/site.js?v=f1b9d655"></script>
+<script src="assets/site.js?v=35810cae"></script>
 
 </body>
 </html>
