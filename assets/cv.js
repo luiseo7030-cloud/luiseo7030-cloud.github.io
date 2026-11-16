@@ -134,6 +134,18 @@ window.KW_CV = {
  ],
  "gallery": [
   {
+   "img": "assets/gallery/small-2026-fig5.jpg",
+   "w": 1600,
+   "h": 1458,
+   "area": 1,
+   "t": "Quantum-dot films after two days in water",
+   "d": "Liquid-cell AFM force mapping of CsPbBr3 quantum-dot polymer films: lateral force, height and 16 × 16 stiffness maps, measured right after wetting and after 2 days in water. The graft-copolymer film keeps more of its stiff regions.",
+   "cite": "S. R. Song, K. Seo et al., Small, e76045 (2026), Fig. 5",
+   "doi": "10.1002/smll.76045",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  {
    "img": "assets/gallery/carbpol-2025-fig3.jpg",
    "w": 1600,
    "h": 1340,
