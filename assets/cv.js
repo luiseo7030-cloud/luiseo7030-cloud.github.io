@@ -115,7 +115,12 @@ window.KW_CV = {
     "Roughness",
     "Spatial heterogeneity"
    ],
-   "related": []
+   "related": [
+    {
+     "label": "J. Mater. Chem. A 2026 · antisolvent-free perovskite solar cells",
+     "href": "https://doi.org/10.1039/d6ta03812c"
+    }
+   ]
   }
  ],
  "materials": [
@@ -134,7 +139,7 @@ window.KW_CV = {
   "SEM"
  ],
  "scholar": {
-  "as_of": "2026-11-02",
+  "as_of": "2026-11-16",
   "citations": 19,
   "h_index": 2,
   "i10_index": 1
