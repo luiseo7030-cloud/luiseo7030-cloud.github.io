@@ -20,9 +20,9 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="assets/site.css?v=35810cae">
-<script src="assets/cv.js?v=35810cae"></script>
-<script src="assets/common.js?v=35810cae"></script>
+<link rel="stylesheet" href="assets/site.css?v=6e7da273">
+<script src="assets/cv.js?v=6e7da273"></script>
+<script src="assets/common.js?v=6e7da273"></script>
 <style>
 .pf{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:auto minmax(0,1fr);gap:36px;align-items:center;
   padding-block:64px 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
@@ -194,7 +194,10 @@ ul.tl>li.star .w{color:var(--accent);font-weight:600}
   $("nm").innerHTML = `${esc(cv.name)}<span class="ko">${esc(cv.name_ko)}</span>`;
   $("tagline").textContent = cv.tagline;
   $("aff").textContent = `${cv.role} · ${cv.lab} · ${cv.affiliation}`;
-  $("links").innerHTML = cv.links.map(l => `<a href="${esc(l.href)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join("");
+  /* the address is stored as "name[at]domain[dot]kr" so it is not readable in the page source; the mailto is made here */
+  const mail = (cv.email || "").replace(/\[at\]/g, "@").replace(/\[dot\]/g, ".");
+  $("links").innerHTML = cv.links.map(l => `<a href="${esc(l.href)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join("")
+    + (/^[^@\s]+@[^@\s]+\.[a-z]+$/i.test(mail) ? `<a href="mailto:${esc(mail)}" title="${esc(mail)}">Email</a>` : "");
   $("sum").textContent = cv.summary_ko;
   $("kw").innerHTML = (cv.keywords || []).map(k => `<span>${esc(k)}</span>`).join("");
 
@@ -248,7 +251,7 @@ ul.tl>li.star .w{color:var(--accent);font-weight:600}
 </script>
 
 <footer class="site-foot"><div class="foot-in"><span class="mark">Kyungwon <b>Seo</b></span><span>한양대학교 화학공학과 이미징 기반 소재 지능 연구실</span></div></footer>
-<script src="assets/site.js?v=35810cae"></script>
+<script src="assets/site.js?v=6e7da273"></script>
 
 </body>
 </html>

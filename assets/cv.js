@@ -132,6 +132,20 @@ window.KW_CV = {
   "Nanovesicles",
   "Covalent adaptable networks"
  ],
+ "gallery": [
+  {
+   "img": "assets/gallery/carbpol-2025-fig3.jpg",
+   "w": 1600,
+   "h": 1340,
+   "area": 1,
+   "t": "Coatings in air and in water",
+   "d": "Liquid-phase AFM of Laponite–heparin layer-by-layer coatings: 3D topography in air and in water, with roughness, thickness and apparent modulus. The layers swell and soften in water.",
+   "cite": "S. Y. Jang et al., Carbohydr. Polym. 348, 122875 (2025), Fig. 3",
+   "doi": "10.1016/j.carbpol.2024.122875",
+   "license": "CC BY-NC-ND 4.0",
+   "license_url": "https://creativecommons.org/licenses/by-nc-nd/4.0/"
+  }
+ ],
  "keywords": [
   "Liquid-phase AFM",
   "TEM Tomography",

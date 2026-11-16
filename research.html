@@ -20,9 +20,9 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="assets/site.css?v=35810cae">
-<script src="assets/cv.js?v=35810cae"></script>
-<script src="assets/common.js?v=35810cae"></script>
+<link rel="stylesheet" href="assets/site.css?v=6e7da273">
+<script src="assets/cv.js?v=6e7da273"></script>
+<script src="assets/common.js?v=6e7da273"></script>
 <style>
 /* numbered research-area cards (icon, number, title, English + Korean text, tags, related work) */
 .areas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
@@ -45,6 +45,25 @@
 .mat{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;max-width:860px;margin:0 auto}
 .mat span{font:500 13.5px/1 var(--sans);padding:10px 14px;border-radius:999px;border:1px solid var(--line);background:var(--panel)}
 .page-band p.lead{max-width:62ch}
+/* gallery: published figures, whole and unmodified (licence), click to enlarge */
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:22px;max-width:1100px;margin:0 auto}
+.gal:has(> :only-child){max-width:640px}
+.fig{margin:0;display:flex;flex-direction:column;gap:10px;min-width:0}
+.fig .pic{display:block;padding:10px;border-radius:10px;background:#fff;border:1px solid var(--line);cursor:zoom-in;transition:border-color .15s,transform .15s}
+.fig .pic:hover{border-color:var(--gold);transform:translateY(-2px)}
+.fig .pic img{display:block;width:100%;height:auto}
+.fig h3{margin:4px 0 0;font:600 16.5px/1.35 var(--display)}
+.fig .ar{font:600 11px/1 var(--mono);letter-spacing:.1em;color:var(--accent);text-decoration:none}
+.fig p{margin:0;font-size:14px;line-height:1.65}
+.fig .cite{font-size:12.5px;color:var(--muted);line-height:1.6}
+.fig .cite a{color:var(--link)}
+dialog.lb{border:0;padding:0;background:transparent;max-width:min(94vw,1100px);width:100%;overflow:visible}
+dialog.lb::backdrop{background:rgba(10,12,15,.86)}
+dialog.lb img{display:block;width:100%;height:auto;max-height:84vh;object-fit:contain;border-radius:6px;background:#fff}
+dialog.lb p{margin:10px 0 0;color:#fff;font-size:13.5px;text-align:center}
+dialog.lb .x{position:absolute;top:-14px;right:-14px;width:36px;height:36px;border-radius:50%;border:0;background:var(--gold);color:#16181b;
+  font:600 18px/1 var(--sans);cursor:pointer}
+@media (max-width:560px){dialog.lb .x{top:-44px;right:0}}
 </style>
 
 <nav class="site-nav" aria-label="사이트 메뉴"><div class="nav-in"><a class="logo" href="index.html">Kyungwon <b>Seo</b></a><ul><li><a href="index.html">Profile</a></li><li><a href="research.html" data-home aria-current="page">Research</a></li><li><a href="publications.html">Publications</a></li><li><a href="news.html">News</a></li><li><a href="awards.html">Awards</a></li><li><a href="afm-3d-viewer/">AFM 3D Viewer</a></li></ul></div></nav>
@@ -63,7 +82,20 @@
   </div>
 </section>
 
-<section class="band alt tight" id="materials">
+<section class="band alt tight" id="gallery">
+  <div class="band-in">
+    <div class="sh" data-rv><span class="lbl">Gallery</span><h2>Image Gallery</h2><p>Figures from published papers, shown as published.</p></div>
+    <div class="gal" id="gal" data-rv-kids></div>
+  </div>
+</section>
+
+<dialog class="lb" id="lb" aria-label="그림 크게 보기">
+  <button class="x" type="button" aria-label="닫기">×</button>
+  <img id="lb-img" alt="">
+  <p id="lb-cap"></p>
+</dialog>
+
+<section class="band tight" id="materials">
   <div class="band-in">
     <div class="sh" data-rv><span class="lbl">Materials</span><h2>Materials Studied</h2><p>Samples measured in collaborative projects with universities, institutes and industry.</p></div>
     <div class="mat" id="mat" data-rv></div>
@@ -100,7 +132,25 @@
     ${(r.related || []).length ? `<div class="rel"><h4>Related work</h4><ul>${r.related.map(l =>
       `<li><a href="${esc(l.href)}"${/^https?:/.test(l.href) ? ' target="_blank" rel="noopener"' : ""}>${esc(l.label)}</a></li>`).join("")}</ul></div>` : ""}
   </article>`).join("");
-  $("mat").innerHTML = (cv.materials || []).map(m => `<span>${esc(m)}</span>`).join("");
+  const G = cv.gallery || [];
+  if (!G.length) $("gallery").hidden = true;
+  $("gal").innerHTML = G.map((g, i) => `<figure class="fig">
+    <button type="button" class="pic" data-i="${i}" aria-label="크게 보기: ${esc(g.t)}"><img src="${esc(g.img)}" alt="${esc(g.t)}: ${esc(g.d)}" loading="lazy" width="${+g.w || ""}" height="${+g.h || ""}"></button>
+    ${g.area ? `<a class="ar" href="#area-${+g.area}">${String(g.area).padStart(2, "0")} · ${esc((cv.research[g.area - 1] || {}).t || "")}</a>` : ""}
+    <h3>${esc(g.t)}</h3>
+    <p>${esc(g.d)}</p>
+    <p class="cite">Reproduced from ${esc(g.cite)}, <a href="https://doi.org/${esc(g.doi)}" target="_blank" rel="noopener">doi:${esc(g.doi)}</a>.
+      Licensed under <a href="${esc(g.license_url)}" target="_blank" rel="noopener">${esc(g.license)}</a>.</p>
+  </figure>`).join("");
+  const lb = $("lb");
+  $("gal").addEventListener("click", e => {
+    const b = e.target.closest("button[data-i]"); if (!b) return;
+    const g = G[+b.dataset.i];
+    $("lb-img").src = g.img; $("lb-img").alt = g.t; $("lb-cap").textContent = `${g.t} · ${g.cite}`;
+    lb.showModal();
+  });
+  lb.addEventListener("click", e => { if (e.target === lb || e.target.closest(".x")) lb.close(); });
+  $("mat").innerHTML =(cv.materials || []).map(m => `<span>${esc(m)}</span>`).join("");
   /* the profile is index.html on the public site and profile.html in the analysis factory */
   if (document.querySelector('.site-nav a[href="profile.html"]')) $("co-link").href = "profile.html#collaborators";
   if (!(cv.materials || []).length) $("materials").hidden = true;
@@ -108,7 +158,7 @@
 </script>
 
 <footer class="site-foot"><div class="foot-in"><span class="mark">Kyungwon <b>Seo</b></span><span>한양대학교 화학공학과 이미징 기반 소재 지능 연구실</span></div></footer>
-<script src="assets/site.js?v=35810cae"></script>
+<script src="assets/site.js?v=6e7da273"></script>
 
 </body>
 </html>
