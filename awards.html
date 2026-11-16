@@ -93,8 +93,7 @@ dialog.lb .x{position:absolute;top:-14px;right:-14px;width:36px;height:36px;bord
   const MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
   const fmt = d => { const [y, m, dd] = d.split("-"); return !m ? y : !dd ? `${MON[m - 1]} ${y}` : `${MON[m - 1]} ${+dd}, ${y}`; };
   const A = (cv.news || []).filter(n => n.tag === "award" || n.tag === "scholarship");
-  const rank = n => n.star ? 0 : n.minor ? 2 : 1;            // starred first, small ones last, newest first within each
-  const cards = A.filter(n => n.certs && n.certs.length).sort((a, b) => rank(a) - rank(b) || b.date.localeCompare(a.date));
+  const cards = A.filter(n => n.certs && n.certs.length).sort((a, b) => b.date.localeCompare(a.date));   // date received, newest first
   const rest = A.filter(n => !(n.certs && n.certs.length)).sort((a, b) => b.date.localeCompare(a.date));
 
   $("sub").textContent = `${A.filter(n => n.tag === "award").length} awards and ${A.filter(n => n.tag === "scholarship").length} scholarships`;
