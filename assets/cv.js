@@ -146,6 +146,18 @@ window.KW_CV = {
    "license_url": "https://creativecommons.org/licenses/by/4.0/"
   },
   {
+   "img": "assets/gallery/small-2026-figS18.jpg",
+   "w": 1482,
+   "h": 1249,
+   "area": 1,
+   "t": "Stiffness distributions in water",
+   "d": "Gaussian-fitted stiffness distributions of the PMMA and graft-copolymer films right after immersion and after 2 days in water: the PMMA film loses its stiff population, while the graft-copolymer film keeps part of it.",
+   "cite": "S. R. Song, K. Seo et al., Small, e76045 (2026), Supplementary Fig. S18",
+   "doi": "10.1002/smll.76045",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  {
    "img": "assets/gallery/cej-2026-alginate-fig4.jpg",
    "w": 1600,
    "h": 1745,
@@ -186,6 +198,17 @@ window.KW_CV = {
    "t": "Microalgae stiffness in water",
    "d": "Liquid-phase AFM nanoindentation of four microalgae species: topography, 10 × 10 stiffness maps, stiffness distributions, force–indentation curves with Hertz fits, and Young's modulus.",
    "cite": "H. Baek, S. Ruw, K. Seo et al., Small 22, e11456 (2026), Fig. 5",
+   "doi": "10.1002/smll.202511456",
+   "license": "© 2025 Wiley-VCH GmbH. All rights reserved."
+  },
+  {
+   "img": "assets/gallery/small-2025-figS8.jpg",
+   "w": 1437,
+   "h": 431,
+   "area": 1,
+   "t": "Microalgae in 3D",
+   "d": "3D-rendered AFM topography of four microalgae species measured in water, each cell flattened on a glass substrate (8–9 µm scans).",
+   "cite": "H. Baek, S. Ruw, K. Seo et al., Small 22, e11456 (2026), Supplementary Fig. S8",
    "doi": "10.1002/smll.202511456",
    "license": "© 2025 Wiley-VCH GmbH. All rights reserved."
   },

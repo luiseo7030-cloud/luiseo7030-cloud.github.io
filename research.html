@@ -20,9 +20,9 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="assets/site.css?v=8cb68815">
-<script src="assets/cv.js?v=8cb68815"></script>
-<script src="assets/common.js?v=8cb68815"></script>
+<link rel="stylesheet" href="assets/site.css?v=b3c82bc0">
+<script src="assets/cv.js?v=b3c82bc0"></script>
+<script src="assets/common.js?v=b3c82bc0"></script>
 <style>
 /* numbered research-area cards (icon, number, title, English + Korean text, tags, related work) */
 .areas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
@@ -46,17 +46,25 @@
 .mat span{font:500 13.5px/1 var(--sans);padding:10px 14px;border-radius:999px;border:1px solid var(--line);background:var(--panel)}
 .page-band p.lead{max-width:62ch}
 /* gallery: published figures, whole and unmodified (licence), click to enlarge */
-.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:22px;width:100%;max-width:1100px;margin:0 auto}
-.gal:has(> :only-child){max-width:640px}
+/* one group per paper, newest paper first; the figures of a paper sit side by side */
+.gal{display:flex;flex-direction:column;gap:44px;width:100%;max-width:1100px;margin:0 auto}
+.gp{display:flex;flex-direction:column;gap:16px;min-width:0}
+.gp-h{display:flex;flex-direction:column;gap:6px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.gp-h .j{font:600 12px/1 var(--mono);letter-spacing:.06em;color:var(--accent)}
+.gp-h h3{margin:0;font:600 18px/1.4 var(--display)}
+.gp-h h3 a{color:inherit;text-decoration:none}
+.gp-h h3 a:hover{color:var(--link);text-decoration:underline;text-underline-offset:3px}
+.gp-h .cite{margin:0;font-size:12.5px;color:var(--muted);line-height:1.6}
+.gp-h .cite a{color:var(--link)}
+.gp-figs{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:22px}
+.gp-figs:has(> :only-child){grid-template-columns:minmax(0,600px)}
 .fig{margin:0;display:flex;flex-direction:column;gap:10px;min-width:0}
+.fig .fl{font:600 11px/1 var(--mono);letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
 .fig .pic{display:block;padding:10px;border-radius:10px;background:#fff;border:1px solid var(--line);cursor:zoom-in;transition:border-color .15s,transform .15s}
 .fig .pic:hover{border-color:var(--gold);transform:translateY(-2px)}
 .fig .pic img{display:block;width:100%;height:auto}
-.fig h3{margin:4px 0 0;font:600 16.5px/1.35 var(--display)}
-.fig .ar{font:600 11px/1 var(--mono);letter-spacing:.1em;color:var(--accent);text-decoration:none}
+.fig h4{margin:2px 0 0;font:600 16px/1.35 var(--display)}
 .fig p{margin:0;font-size:14px;line-height:1.65}
-.fig .cite{font-size:12.5px;color:var(--muted);line-height:1.6}
-.fig .cite a{color:var(--link)}
 dialog.lb{border:0;padding:0;background:transparent;max-width:min(94vw,1100px);width:100%;overflow:visible}
 dialog.lb::backdrop{background:rgba(10,12,15,.86)}
 dialog.lb img{display:block;width:100%;height:auto;max-height:84vh;object-fit:contain;border-radius:6px;background:#fff}
@@ -134,14 +142,31 @@ dialog.lb .x{position:absolute;top:-14px;right:-14px;width:36px;height:36px;bord
   </article>`).join("");
   const G = cv.gallery || [];
   if (!G.length) $("gallery").hidden = true;
-  $("gal").innerHTML = G.map((g, i) => `<figure class="fig">
-    <button type="button" class="pic" data-i="${i}" aria-label="크게 보기: ${esc(g.t)}"><img src="${esc(g.img)}" alt="${esc(g.t)}: ${esc(g.d)}" loading="lazy" width="${+g.w || ""}" height="${+g.h || ""}"></button>
-    ${g.area ? `<a class="ar" href="#area-${+g.area}">${String(g.area).padStart(2, "0")} · ${esc((cv.research[g.area - 1] || {}).t || "")}</a>` : ""}
-    <h3>${esc(g.t)}</h3>
-    <p>${esc(g.d)}</p>
-    <p class="cite">Reproduced from ${esc(g.cite)}, <a href="https://doi.org/${esc(g.doi)}" target="_blank" rel="noopener">doi:${esc(g.doi)}</a>.
-      ${g.license_url ? `Licensed under <a href="${esc(g.license_url)}" target="_blank" rel="noopener">${esc(g.license)}</a>.` : esc(g.license)}</p>
-  </figure>`).join("");
+  /* group the figures by paper (DOI), papers newest first by the publication date in cv.news; inside a paper the
+     figures keep their order in cv.json (main text, then supplementary). "cite" is "<authors, journal (year)>, <figure>" */
+  const pubOf = {}; (cv.publications || []).forEach(p => { if (p.doi) pubOf[p.doi.toLowerCase()] = p; });
+  const groups = [];
+  G.forEach((g, i) => { const k = g.doi.toLowerCase(); let gr = groups.find(x => x.k === k);
+    if (!gr) groups.push(gr = { k, g, items: [], d: pubDate[k] || "", n: groups.length }); gr.items.push({ g, i }); });
+  groups.sort((a, b) => (b.d > a.d) - (b.d < a.d) || a.n - b.n);
+  /* paper titles carry <sub>/<sup>/<i> (CsPbBr<sub>3</sub>): escape everything, then let only those tags through */
+  const rich = t => esc(t).replace(/&lt;(\/?)(sub|sup|i)&gt;/g, "<$1$2>");
+  const split = c => { const j = c.lastIndexOf(", "); return j < 0 ? [c, ""] : [c.slice(0, j), c.slice(j + 2)]; };
+  $("gal").innerHTML = groups.map(gr => { const g = gr.g, p = pubOf[gr.k] || {};
+    return `<section class="gp">
+    <div class="gp-h">
+      <span class="j">${esc([p.journal, p.year].filter(Boolean).join(" · "))}</span>
+      <h3><a href="https://doi.org/${esc(g.doi)}" target="_blank" rel="noopener">${p.title ? rich(p.title) : esc(split(g.cite)[0])}</a></h3>
+      <p class="cite">Reproduced from ${esc(split(g.cite)[0])}, <a href="https://doi.org/${esc(g.doi)}" target="_blank" rel="noopener">doi:${esc(g.doi)}</a>.
+        ${g.license_url ? `Licensed under <a href="${esc(g.license_url)}" target="_blank" rel="noopener">${esc(g.license)}</a>.` : esc(g.license)}</p>
+    </div>
+    <div class="gp-figs">${gr.items.map(({ g, i }) => `<figure class="fig">
+      <button type="button" class="pic" data-i="${i}" aria-label="크게 보기: ${esc(g.t)}"><img src="${esc(g.img)}" alt="${esc(g.t)}: ${esc(g.d)}" loading="lazy" width="${+g.w || ""}" height="${+g.h || ""}"></button>
+      <span class="fl">${esc(split(g.cite)[1])}</span>
+      <h4>${esc(g.t)}</h4>
+      <p>${esc(g.d)}</p>
+    </figure>`).join("")}</div>
+  </section>`; }).join("");
   const lb = $("lb");
   $("gal").addEventListener("click", e => {
     const b = e.target.closest("button[data-i]"); if (!b) return;
@@ -158,7 +183,7 @@ dialog.lb .x{position:absolute;top:-14px;right:-14px;width:36px;height:36px;bord
 </script>
 
 <footer class="site-foot"><div class="foot-in"><span class="mark">Kyungwon <b>Seo</b></span><span>한양대학교 화학공학과 이미징 기반 소재 지능 연구실</span></div></footer>
-<script src="assets/site.js?v=8cb68815"></script>
+<script src="assets/site.js?v=b3c82bc0"></script>
 
 </body>
 </html>
