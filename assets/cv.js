@@ -129,8 +129,13 @@ window.KW_CV = {
   "Cellulose & CNC",
   "Perovskites & quantum dots",
   "MXene",
-  "Nanovesicles",
-  "Covalent adaptable networks"
+  "Nanovesicles & liposomes",
+  "Metal–phenolic network capsules",
+  "Covalent adaptable networks",
+  "Photoswitchable (DASA) polymers",
+  "Acrylic rubbers & PLA films",
+  "Silk nanofibers",
+  "RNA–CNT hybrids"
  ],
  "gallery": [
   {
@@ -961,7 +966,7 @@ window.KW_CV = {
   }
  ],
  "collaborators": {
-  "as_of": "2026-10-19",
+  "as_of": "2026-11-18",
   "groups": [
    {
     "type": "university",
@@ -1000,6 +1005,10 @@ window.KW_CV = {
      {
       "pi": "김진웅",
       "title": "교수님"
+     },
+     {
+      "pi": "조수연",
+      "title": "교수님"
      }
     ]
    },
@@ -1010,10 +1019,6 @@ window.KW_CV = {
     "people": [
      {
       "pi": "김정",
-      "title": "교수님"
-     },
-     {
-      "pi": "오준균",
       "title": "교수님"
      }
     ]
@@ -1045,6 +1050,10 @@ window.KW_CV = {
      {
       "pi": "송우철",
       "title": "교수님"
+     },
+     {
+      "pi": "이기라",
+      "title": "교수님"
      }
     ]
    },
@@ -1070,6 +1079,10 @@ window.KW_CV = {
      },
      {
       "pi": "최원호",
+      "title": "교수님"
+     },
+     {
+      "pi": "이강주",
       "title": "교수님"
      }
     ]
@@ -1112,6 +1125,10 @@ window.KW_CV = {
      {
       "pi": "우상혁",
       "title": "교수님"
+     },
+     {
+      "pi": "박주현",
+      "title": "교수님"
      }
     ]
    },
@@ -1122,6 +1139,10 @@ window.KW_CV = {
     "people": [
      {
       "pi": "김찬진",
+      "title": "교수님"
+     },
+     {
+      "pi": "김주영",
       "title": "교수님"
      }
     ]
@@ -1204,6 +1225,50 @@ window.KW_CV = {
     "people": [
      {
       "pi": "하지훈",
+      "title": "박사님"
+     }
+    ]
+   },
+   {
+    "name_ko": "단국대학교",
+    "name_en": "Dankook University",
+    "type": "university",
+    "people": [
+     {
+      "pi": "오준균",
+      "title": "교수님"
+     }
+    ]
+   },
+   {
+    "name_ko": "고려대학교",
+    "name_en": "Korea University",
+    "type": "university",
+    "people": [
+     {
+      "pi": "이정현",
+      "title": "교수님"
+     }
+    ]
+   },
+   {
+    "name_ko": "한국화학연구원",
+    "name_en": "KRICT",
+    "type": "institute",
+    "people": [
+     {
+      "pi": "조형훈",
+      "title": "박사님"
+     }
+    ]
+   },
+   {
+    "name_ko": "한국소재융합연구원",
+    "name_en": "KIMCO",
+    "type": "institute",
+    "people": [
+     {
+      "pi": "노광해",
       "title": "박사님"
      }
     ]
