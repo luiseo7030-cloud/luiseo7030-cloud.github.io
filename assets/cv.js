@@ -270,6 +270,26 @@ window.KW_CV = {
  "publications": [
   {
    "year": 2026,
+   "authors": "Hee Seung Ryu, Jiyoung Kim, Kyungwon Seo, Uijun Lee, Jun-Won Lee, Seonju Kim, Sumin Jung, Hyeonmin Jo, Hyosang Joo, Jihong Kim, Heejoon Ahn, Hyosung An, Dong Ok Shin, Chanhoon Kim, Hee-Dae Lim",
+   "title": "Intergranular Reactivity–Regulated Corrosion-Resistant Metal Anodes for Aqueous Zn Metal Batteries",
+   "journal": "Advanced Functional Materials",
+   "ref": "Accepted",
+   "url": "https://www.hyosung-an.com/publications",
+   "cites": 0,
+   "topic": "Energy"
+  },
+  {
+   "year": 2026,
+   "authors": "Yeonseo Joo, Kyungwon Seo, Hyosung An, Daeyeon Lee, Hyerim Hwang",
+   "title": "Arrested order propagation in amorphous assemblies of anisometric colloids",
+   "journal": "Proceedings of the National Academy of Sciences",
+   "ref": "Accepted",
+   "url": "https://www.hyosung-an.com/publications",
+   "cites": 0,
+   "topic": "Colloids"
+  },
+  {
+   "year": 2026,
    "authors": "Ho Jun Lee, Mun Suk Seong, Kyungwon Seo, Cheol Lee, Chanwung Mun, Hyosung An, Jong Suk Lee",
    "title": "Hierarchical dual-crosslinked alginate interlayer for structurally uniform thin-film composite nanofiltration membranes",
    "journal": "Chemical Engineering Journal",
@@ -1184,17 +1204,6 @@ window.KW_CV = {
     "people": [
      {
       "pi": "하지훈",
-      "title": "박사님"
-     }
-    ]
-   },
-   {
-    "name_ko": "아모레퍼시픽",
-    "name_en": "Amorepacific",
-    "type": "industry",
-    "people": [
-     {
-      "pi": "송채연",
       "title": "박사님"
      }
     ]
