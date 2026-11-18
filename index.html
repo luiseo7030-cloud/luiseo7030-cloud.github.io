@@ -232,7 +232,8 @@ ul.tl>li.star .w{color:var(--accent);font-weight:600}
   const orgs = C.orgs.slice().sort((a, b) => ko(a.name_ko, b.name_ko));
   const sumOf = f => orgs.reduce((n, o) => n + o.people.reduce((m, p) => m + (p[f] || 0), 0), 0);
   const on = sumOf("ongoing"), dn = sumOf("completed");
-  $("co-n").textContent = on + dn ? `${orgs.length}개 기관 · 공동연구 ${on + dn}건 (진행중 ${on}, 완료 ${dn})` : `${orgs.length}개 기관`;
+  const teams = list => list.reduce((n, o) => n + o.people.length, 0);  /* one research team per PI */
+  $("co-n").textContent = on + dn ? `${teams(orgs)}개 연구팀 · 공동연구 ${on + dn}건 (진행중 ${on}, 완료 ${dn})` : `${teams(orgs)}개 연구팀`;
   const groups = [{ type: "all", label: "All" }, ...C.groups.filter(g => orgs.some(o => o.type === g.type))];
   const card = o => `<div class="org"><h4>${esc(o.name_ko)}</h4><span class="en">${esc(o.name_en)}</span><ul>${
     o.people.slice().sort((a, b) => ko(a.pi, b.pi)).map(p => `<li><span class="pi">${esc(p.pi)} ${esc(p.title)}</span><span class="cnt">${
@@ -243,7 +244,7 @@ ul.tl>li.star .w{color:var(--accent);font-weight:600}
     [...$("co-tabs").children].forEach(b => b.setAttribute("aria-selected", b.dataset.t === type ? "true" : "false"));
   }
   $("co-tabs").innerHTML = groups.map(g => `<button type="button" role="tab" id="co-${g.type}" data-t="${g.type}">${esc(g.label)}<span class="c">${
-    g.type === "all" ? orgs.length : orgs.filter(o => o.type === g.type).length}</span></button>`).join("");
+    teams(g.type === "all" ? orgs : orgs.filter(o => o.type === g.type))}</span></button>`).join("");
   $("co-tabs").addEventListener("click", e => { const b = e.target.closest("button"); if (b) show(b.dataset.t); });
   show("all");
   $("em").textContent = cv.email;
