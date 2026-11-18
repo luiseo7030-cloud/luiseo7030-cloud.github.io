@@ -1080,10 +1080,6 @@ window.KW_CV = {
      {
       "pi": "최원호",
       "title": "교수님"
-     },
-     {
-      "pi": "이강주",
-      "title": "교수님"
      }
     ]
    },
@@ -1252,17 +1248,6 @@ window.KW_CV = {
     ]
    },
    {
-    "name_ko": "한국화학연구원",
-    "name_en": "KRICT",
-    "type": "institute",
-    "people": [
-     {
-      "pi": "조형훈",
-      "title": "박사님"
-     }
-    ]
-   },
-   {
     "name_ko": "한국소재융합연구원",
     "name_en": "KIMCO",
     "type": "institute",
@@ -1270,6 +1255,17 @@ window.KW_CV = {
      {
       "pi": "노광해",
       "title": "박사님"
+     }
+    ]
+   },
+   {
+    "name_ko": "인천대학교",
+    "name_en": "Incheon National University",
+    "type": "university",
+    "people": [
+     {
+      "pi": "이강주",
+      "title": "교수님"
      }
     ]
    }
