@@ -3,7 +3,7 @@ window.KW_CV = {
  "name": "Kyungwon Seo",
  "name_ko": "서경원",
  "me": "Kyungwon Seo",
- "role": "Undergraduate Research Assistant",
+ "role": "Research Assistant",
  "lab": "Morphology Intelligence Lab · Advisor: Prof. Hyosung An",
  "lab_ko": "한양대학교 화학공학과 이미징 기반 소재 지능 연구실",
  "affiliation": "Department of Chemical Engineering, Hanyang University",
@@ -26,7 +26,7 @@ window.KW_CV = {
    "href": "https://www.hyosung-an.com/"
   }
  ],
- "tagline": "AFM nanomechanics of soft materials",
+ "tagline": "Nanoscale imaging and quantitative morphology of soft materials",
  "summary_ko": "액상·대기 AFM 으로 소프트 소재의 나노 구조와 물성을 측정하고,\n전자현미경으로 3D 나노 구조를 분석합니다.",
  "research_intro": "Measuring how soft materials are built and how they behave at the nanoscale, in air and in liquid, and turning microscopy images into numbers.",
  "research": [
