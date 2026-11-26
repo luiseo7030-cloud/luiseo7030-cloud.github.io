@@ -20,10 +20,27 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="assets/site.css?v=c5fb81a6">
-<script src="assets/cv.js?v=c5fb81a6"></script>
-<script src="assets/common.js?v=c5fb81a6"></script>
+<link rel="stylesheet" href="assets/site.css?v=4ad3c06b">
+<script src="assets/cv.js?v=4ad3c06b"></script>
+<script src="assets/common.js?v=4ad3c06b"></script>
+<script src="assets/zoom.js?v=4ad3c06b"></script>
 <style>
+/* cover: rendered zoom from a film down to atoms behind the name; the scale bar is drawn by the page so it stays sharp */
+.cover{overflow:hidden;isolation:isolate;background:var(--band)}
+.cover-v{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 50%;z-index:-2;pointer-events:none}
+.cover::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(90deg,rgba(14,17,20,.94) 0%,rgba(14,17,20,.78) 34%,rgba(14,17,20,.22) 68%,rgba(14,17,20,.3) 100%),
+    linear-gradient(0deg,rgba(14,17,20,.75) 0%,transparent 26%)}
+@media (max-width:680px){.cover::before{background:linear-gradient(rgba(14,17,20,.55),rgba(14,17,20,.72))}}
+.cover .pf{min-height:clamp(440px,64vh,640px);padding-block:72px 84px}
+@media (max-width:680px){.cover .pf{min-height:0;padding-block:44px 92px}}
+.zs{position:absolute;right:max(20px,env(safe-area-inset-right,0px));bottom:18px;display:flex;flex-direction:column;align-items:flex-end;gap:7px;
+  font:500 11px/1 var(--mono);letter-spacing:.06em;color:rgba(255,255,255,.86);pointer-events:none;text-shadow:0 1px 3px rgba(0,0,0,.6)}
+@media (max-width:680px){.zs{right:50%;transform:translateX(50%);align-items:center}}
+.zs .lb{text-transform:uppercase;color:var(--gold)}
+.zs .row{display:flex;align-items:center;gap:10px}
+.zs .bar{display:block;height:3px;width:60px;background:#fff;border-radius:2px;box-shadow:0 1px 3px rgba(0,0,0,.5)}
+.zs .nt{font-size:10px;color:rgba(255,255,255,.5);letter-spacing:.04em}
 .pf{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:auto minmax(0,1fr);gap:36px;align-items:center;
   padding-block:64px 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 @media (max-width:680px){.pf{grid-template-columns:minmax(0,1fr);justify-items:center;text-align:center;gap:20px;padding-block:44px}}
@@ -111,7 +128,11 @@ ul.tl>li.star .w{color:var(--accent);font-weight:600}
 
 <nav class="site-nav" aria-label="사이트 메뉴"><div class="nav-in"><a class="logo" href="index.html">Kyungwon <b>Seo</b></a><ul><li><a href="index.html" data-home aria-current="page">Profile</a></li><li><a href="research.html">Research</a></li><li><a href="publications.html">Publications</a></li><li><a href="news.html">News</a></li><li><a href="awards.html">Awards</a></li><li><a href="afm-3d-viewer/">AFM 3D Viewer</a></li></ul></div></nav>
 
-<header class="page-band">
+<header class="page-band cover">
+  <video class="cover-v" id="cover-v" muted loop playsinline autoplay preload="auto" poster="assets/zoom.jpg" aria-hidden="true" tabindex="-1">
+    <source src="assets/zoom.mp4" type="video/mp4">
+  </video>
+  <div class="zs" id="zs" aria-hidden="true" hidden><span class="lb" id="zs-l"></span><span class="row"><span id="zs-v"></span><span class="bar" id="zs-b"></span></span><span class="nt">rendered illustration</span></div>
   <div class="pf">
     <img class="photo" src="assets/photo.jpg" alt="Kyungwon Seo" width="200" height="256">
     <div>
@@ -250,9 +271,48 @@ ul.tl>li.star .w{color:var(--accent);font-weight:600}
   $("em").textContent = cv.email;
 })();
 </script>
+<script>
+/* cover video: plays only while on screen, not at all with reduced motion or data saver;
+   the scale bar follows the frame on screen (field width per frame from assets/zoom.js) */
+(function(){
+  const v = document.getElementById("cover-v"), Z = window.KW_ZOOM;
+  if (!v) return;
+  const still = matchMedia("(prefers-reduced-motion: reduce)").matches || (navigator.connection && navigator.connection.saveData);
+  if (still) { v.removeAttribute("autoplay"); v.preload = "none"; v.pause(); v.poster = "assets/zoom-still.jpg"; }
+  const play = () => { if (!still) v.play().catch(() => {}); };
+  if ("IntersectionObserver" in window)
+    new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? play() : v.pause())).observe(v.parentElement);
+  if (!Z) return;
+  const box = v.parentElement, zs = document.getElementById("zs"), bar = document.getElementById("zs-b"),
+    val = document.getElementById("zs-v"), lab = document.getElementById("zs-l");
+  const units = [[1e-3, "mm"], [1e-6, "µm"], [1e-9, "nm"], [1e-10, "Å"]];
+  const fmt = m => { for (const [u, n] of units) if (m >= u * 0.999) return `${+(m / u).toPrecision(3)} ${n}`; return `${+(m / 1e-10).toPrecision(2)} Å`; };
+  let last = "";
+  let mt = 0;                                              // media time of the frame on screen
+  function draw(){
+    const f = Math.min(Z.z.length - 1, Math.max(0, Math.round(mt * Z.fps)));
+    const r = box.getBoundingClientRect(), s = Math.max(r.width / Z.w, r.height / (Z.w * 9 / 16));
+    const mpp = Math.pow(10, Z.z[f]) / (Z.w * s);           // metres per CSS pixel at the zoom target
+    const want = mpp * 120, b = Math.pow(10, Math.floor(Math.log10(want)));
+    const nice = [5 * b, 2 * b, b].find(x => x <= want);    // 1, 2 or 5 x 10^n: bar 48-120 px
+    bar.style.width = (nice / mpp).toFixed(1) + "px";
+    const t = fmt(nice) + "|" + Z.labels[Z.lab[f]];
+    if (t !== last) { last = t; val.textContent = fmt(nice); lab.textContent = Z.labels[Z.lab[f]]; }
+  }
+  zs.hidden = false;
+  draw();
+  if ("requestVideoFrameCallback" in v) {                  // follow the frame actually painted, not currentTime
+    const onFrame = (now, meta) => { mt = meta.mediaTime; draw(); v.requestVideoFrameCallback(onFrame); };
+    v.requestVideoFrameCallback(onFrame);
+  } else {
+    (function loop(){ if (!v.paused && !document.hidden) { mt = v.currentTime; draw(); } requestAnimationFrame(loop); })();
+  }
+  addEventListener("resize", draw);
+})();
+</script>
 
 <footer class="site-foot"><div class="foot-in"><span class="mark">Kyungwon <b>Seo</b></span><span>한양대학교 화학공학과 이미징 기반 소재 지능 연구실</span></div></footer>
-<script src="assets/site.js?v=c5fb81a6"></script>
+<script src="assets/site.js?v=4ad3c06b"></script>
 
 </body>
 </html>

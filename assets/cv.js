@@ -249,7 +249,7 @@ window.KW_CV = {
   "SEM"
  ],
  "scholar": {
-  "as_of": "2026-11-16",
+  "as_of": "2026-11-23",
   "citations": 19,
   "h_index": 2,
   "i10_index": 1
