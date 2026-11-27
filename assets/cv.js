@@ -139,6 +139,28 @@ window.KW_CV = {
  ],
  "gallery": [
   {
+   "img": "assets/gallery/afm-2026-zn-fig1.jpg",
+   "w": 1600,
+   "h": 1481,
+   "area": 1,
+   "t": "Grain boundaries in Zn anodes",
+   "d": "Sn-infused Zn(002) anodes: design concept, Sn along the grain boundaries, and KPFM relative work-function maps of three Zn anodes with profiles across the boundaries. The boundaries read −78.6 and −64.5 meV against the grains in bare Zn, and +98.2 meV once Sn fills them.",
+   "cite": "H. S. Ryu, J. Kim, K. Seo et al., Adv. Funct. Mater., e79875 (2026), Fig. 1",
+   "doi": "10.1002/adfm.79875",
+   "license": "© 2026 Wiley-VCH GmbH. All rights reserved."
+  },
+  {
+   "img": "assets/gallery/afm-2026-zn-figS10.jpg",
+   "w": 1600,
+   "h": 1478,
+   "area": 1,
+   "t": "Finding grain boundaries in KPFM maps",
+   "d": "KPFM work-function maps of three Zn anodes with the profile lines drawn across grain boundaries, the boundary network detected from each map, and the overlay on the image.",
+   "cite": "H. S. Ryu, J. Kim, K. Seo et al., Adv. Funct. Mater., e79875 (2026), Supplementary Fig. S10",
+   "doi": "10.1002/adfm.79875",
+   "license": "© 2026 Wiley-VCH GmbH. All rights reserved."
+  },
+  {
    "img": "assets/gallery/small-2026-fig5.jpg",
    "w": 1600,
    "h": 1458,
