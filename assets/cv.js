@@ -279,6 +279,7 @@ window.KW_CV = {
    "title": "Intergranular Reactivity–Regulated Corrosion-Resistant Metal Anodes for Aqueous Zn Metal Batteries",
    "journal": "Advanced Functional Materials",
    "ref": "e79875",
+   "if": 19.0,
    "doi": "10.1002/adfm.79875",
    "cites": 0,
    "topic": "Energy"
