@@ -26,7 +26,7 @@ window.KW_CV = {
    "href": "https://www.hyosung-an.com/"
   }
  ],
- "tagline": "Nanoscale imaging and quantitative morphology of soft materials",
+ "tagline": "Multiscale imaging and quantitative morphology of soft materials",
  "summary_ko": "액상·대기 AFM 으로 소프트 소재의 나노 구조와 물성을 측정하고,\n전자현미경으로 3D 나노 구조를 분석합니다.",
  "research_intro": "Measuring how soft materials are built and how they behave at the nanoscale, in air and in liquid, and turning microscopy images into numbers.",
  "research": [
