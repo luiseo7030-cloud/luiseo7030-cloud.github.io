@@ -278,8 +278,8 @@ window.KW_CV = {
    "authors": "Hee Seung Ryu, Jiyoung Kim, Kyungwon Seo, Uijun Lee, Jun-Won Lee, Seonju Kim, Sumin Jung, Hyeonmin Jo, Hyosang Joo, Jihong Kim, Heejoon Ahn, Hyosung An, Dong Ok Shin, Chanhoon Kim, Hee-Dae Lim",
    "title": "Intergranular Reactivity–Regulated Corrosion-Resistant Metal Anodes for Aqueous Zn Metal Batteries",
    "journal": "Advanced Functional Materials",
-   "ref": "Accepted",
-   "url": "https://www.hyosung-an.com/publications",
+   "ref": "e79875",
+   "doi": "10.1002/adfm.79875",
    "cites": 0,
    "topic": "Energy"
   },
@@ -509,6 +509,18 @@ window.KW_CV = {
     {
      "label": "Lab news",
      "href": "https://www.hyosung-an.com/news"
+    }
+   ]
+  },
+  {
+   "date": "2026-11-27",
+   "tag": "paper",
+   "title": "New paper in Advanced Functional Materials",
+   "text": "Our collaborative work on Sn-infused Zn(002) anodes, which shield grain boundaries against corrosion in aqueous Zn metal batteries, is out in Advanced Functional Materials. Kyungwon contributed data curation and visualization. In collaboration with Hee-Dae Lim's and Chanhoon Kim's teams at Hanyang University and Dong Ok Shin's team at ETRI.",
+   "links": [
+    {
+     "label": "DOI",
+     "href": "https://doi.org/10.1002/adfm.79875"
     }
    ]
   },
