@@ -22,255 +22,45 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="assets/site.css?v=ecdd3f79">
 <script src="assets/cv.js?v=ecdd3f79"></script>
-<script src="assets/common.js?v=ecdd3f79"></script>
 <script src="assets/zoom.js?v=ecdd3f79"></script>
 <style>
-/* cover: rendered zoom from a film down to atoms behind the name; the scale bar is drawn by the page so it stays sharp */
-.cover{overflow:hidden;isolation:isolate;background:var(--band)}
-.cover-v{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 50%;z-index:-2;pointer-events:none}
-.cover::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background:linear-gradient(90deg,rgba(14,17,20,.94) 0%,rgba(14,17,20,.78) 34%,rgba(14,17,20,.22) 68%,rgba(14,17,20,.3) 100%),
-    linear-gradient(0deg,rgba(14,17,20,.75) 0%,transparent 26%)}
-@media (max-width:680px){.cover::before{background:linear-gradient(rgba(14,17,20,.55),rgba(14,17,20,.72))}}
-.cover .pf{min-height:clamp(440px,64vh,640px);padding-block:72px 84px}
-@media (max-width:680px){.cover .pf{min-height:0;padding-block:44px 92px}}
+/* home: the rendered zoom (X-ray CT down to atoms) fills the screen; only the tagline sits on it.
+   The shade is kept to the lower left, under the text, so the video itself stays clear. */
+.hero{position:relative;overflow:hidden;isolation:isolate;background:var(--band);color:#fff;word-break:keep-all;
+  min-height:calc(100svh - 60px - env(safe-area-inset-top,0px));display:flex;align-items:flex-end}
+.hero-v{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 50%;z-index:-2;pointer-events:none}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(20deg,rgba(14,17,20,.78) 0%,rgba(14,17,20,.35) 30%,transparent 55%)}
+.hero-in{width:100%;max-width:var(--max);margin:0 auto;padding-block:48px 96px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.hero h1{margin:0;max-width:17ch;font:600 clamp(30px,5.2vw,62px)/1.08 var(--display);letter-spacing:-.02em;
+  text-shadow:0 2px 18px rgba(0,0,0,.45)}
+@media (max-width:680px){
+  .hero{min-height:calc(100svh - 104px - env(safe-area-inset-top,0px))}
+  .hero::before{background:linear-gradient(0deg,rgba(14,17,20,.8) 0%,rgba(14,17,20,.3) 38%,transparent 60%)}
+  .hero-in{padding-block:40px 104px}}
 .zs{position:absolute;right:max(20px,env(safe-area-inset-right,0px));bottom:18px;display:flex;flex-direction:column;align-items:flex-end;gap:7px;
   font:500 11px/1 var(--mono);letter-spacing:.06em;color:rgba(255,255,255,.86);pointer-events:none;text-shadow:0 1px 3px rgba(0,0,0,.6)}
 @media (max-width:680px){.zs{right:50%;transform:translateX(50%);align-items:center}}
-.zs .lb{text-transform:uppercase;color:var(--gold)}
+.zs .lb{text-transform:uppercase;color:var(--gold);white-space:nowrap}
 .zs .row{display:flex;align-items:center;gap:10px}
 .zs .bar{display:block;height:3px;width:60px;background:#fff;border-radius:2px;box-shadow:0 1px 3px rgba(0,0,0,.5)}
 .zs .nt{font-size:10px;color:rgba(255,255,255,.5);letter-spacing:.04em}
-.pf{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:auto minmax(0,1fr);gap:36px;align-items:center;
-  padding-block:64px 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-@media (max-width:680px){.pf{grid-template-columns:minmax(0,1fr);justify-items:center;text-align:center;gap:20px;padding-block:44px}}
-.photo{width:164px;height:164px;border-radius:50%;object-fit:cover;object-position:50% 22%;display:block;border:3px solid var(--gold);
-  box-shadow:0 0 0 8px rgba(224,160,48,.12),0 14px 40px rgba(0,0,0,.4);background:#222}
-@media (max-width:680px){.photo{width:124px;height:124px}}
-.pf .kick{font:500 11.5px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
-.pf h1{font:700 clamp(38px,6vw,60px)/1.02 var(--display);letter-spacing:-.02em;color:#fff;margin-top:12px}
-.pf h1 .ko{font:500 .45em/1 var(--sans);color:var(--gold);margin-left:12px;vertical-align:.35em}
-@media (max-width:680px){.pf h1 .ko{display:block;margin:10px 0 0}}
-.pf .tl{font:500 clamp(16px,2vw,20px)/1.4 var(--display);color:rgba(255,255,255,.88);margin:12px 0 0}
-.pf .aff{margin:8px 0 0;color:rgba(255,255,255,.66);font-size:14px;word-break:keep-all}
-.links{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
-@media (max-width:680px){.links{justify-content:center}}
-.links a{font:600 13px/1 var(--sans);color:#fff;text-decoration:none;padding:10px 15px;border:1px solid rgba(255,255,255,.3);border-radius:999px;transition:border-color .15s,color .15s}
-.links a:hover{border-color:var(--gold);color:var(--gold)}
-.links a.pri{background:var(--gold);border-color:var(--gold);color:#16181b}
-.links a.pri:hover{color:#16181b;filter:brightness(1.05)}
-
-.nums{display:grid;grid-template-columns:repeat(var(--n,4),minmax(0,1fr));gap:16px}
-@media (max-width:760px){.nums{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.nums a,.nums div{display:flex;flex-direction:column;gap:4px;padding:18px 20px;border-radius:10px;background:var(--panel);border:1px solid var(--line);
-  text-decoration:none;color:var(--fg);min-width:0}
-.nums a{transition:border-color .2s,transform .2s}
-.nums a:hover{border-color:var(--gold);transform:translateY(-2px)}
-.nums b{font:600 34px/1 var(--display);color:var(--accent);font-variant-numeric:tabular-nums}
-.nums span{font-size:13px;color:var(--muted)}
-.sum{margin:0 auto;max-width:62ch;text-align:center;font-size:16.5px;line-height:1.75;word-break:keep-all;white-space:pre-line}
-.chips{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
-.chips span{font:500 12px/1 var(--sans);padding:7px 11px;border-radius:999px;border:1px solid var(--line);color:var(--muted);background:var(--panel)}
-.rs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-@media (max-width:760px){.rs{grid-template-columns:minmax(0,1fr)}}
-.rs-a{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:10px;background:var(--panel);border:1px solid var(--line);
-  text-decoration:none;color:var(--fg);transition:border-color .2s,transform .2s;min-width:0}
-.rs-a:hover{border-color:var(--gold);transform:translateY(-2px)}
-.rs-a .n{font:600 13px/1 var(--mono);color:var(--accent);letter-spacing:.08em}
-.rs-a .t{font:600 16px/1.35 var(--display)}
-
-.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px}
-@media (max-width:860px){.two{grid-template-columns:minmax(0,1fr);gap:36px}}
-.col{display:flex;flex-direction:column;gap:12px;min-width:0}
-h3.sub{font:600 13px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:10px}
-h3.sub::after{content:"";flex:1;height:1px;background:var(--line)}
-h3.sub .c{color:var(--muted);letter-spacing:0}
-ul.tl{list-style:none;margin:0;padding:0}
-ul.tl>li{display:grid;grid-template-columns:84px minmax(0,1fr);gap:14px;padding:12px 0;border-top:1px solid var(--line);font-size:14px}
-ul.tl>li:first-child{border-top:0;padding-top:4px}
-ul.tl .w{font:500 13px/1.6 var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
-ul.tl .t{font-weight:600}
-ul.tl .d{color:var(--muted);font-size:13px}
-ul.tl ul{margin:4px 0 0;padding-left:16px;color:var(--muted);font-size:13px}
-ul.tl>li.star{background:var(--accent-soft);border-radius:8px;padding:12px 12px;border-top-color:transparent;margin-block:2px}
-ul.tl>li.star+li{border-top-color:transparent}
-ul.tl>li.star .w{color:var(--accent);font-weight:600}
-.aw{columns:2;column-gap:40px}
-@media (max-width:860px){.aw{columns:1}}
-.aw>li{break-inside:avoid}
-
-.sel{display:flex;flex-direction:column}
-.sel a{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:baseline;padding:13px 0;border-top:1px solid var(--line);text-decoration:none;color:var(--fg)}
-.sel a:first-child{border-top:0;padding-top:4px}
-.sel a:hover .tt{text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:4px}
-.sel .tt{font-weight:600;font-size:14.5px;line-height:1.45}
-.sel .jj{display:block;color:var(--muted);font-size:13px;margin-top:3px}
-.sel .if{font:600 11px/1 var(--mono);padding:5px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
-
-.co-tabs{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
-.co-tabs button{font:600 13px/1 var(--sans);padding:10px 16px;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--muted);cursor:pointer}
-.co-tabs button[aria-selected="true"]{background:var(--gold);border-color:var(--gold);color:#16181b}
-.co-tabs button .c{font-family:var(--mono);margin-left:4px;opacity:.75}
-.org-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:14px}
-.org{border:1px solid var(--line);border-radius:10px;padding:16px 18px;background:var(--panel);min-width:0}
-.org h4{margin:0;font:600 15px/1.3 var(--sans)}
-.org .en{display:block;font:11.5px/1.4 var(--mono);color:var(--muted);margin-top:2px}
-.org ul{list-style:none;margin:12px 0 0;padding:12px 0 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:7px;font-size:13.5px}
-.org li{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;justify-content:space-between}
-.org .pi{font-weight:600}
-.org .cnt{display:flex;gap:4px}
-.org .k{font:600 11px/1 var(--sans);padding:4px 7px;border-radius:999px;white-space:nowrap}
-.org .k.on{background:var(--accent-soft);color:var(--accent)}
-.org .k.done{background:var(--sunk);color:var(--muted);border:1px solid var(--line)}
-.contact{display:flex;flex-direction:column;align-items:center;gap:14px}
-.contact .em{font:500 clamp(16px,2.4vw,20px)/1.3 var(--mono);user-select:all;overflow-wrap:anywhere;text-align:center}
 </style>
 
-<nav class="site-nav" aria-label="사이트 메뉴"><div class="nav-in"><a class="logo" href="index.html">Kyungwon <b>Seo</b></a><ul><li><a href="index.html" data-home aria-current="page">Profile</a></li><li><a href="research.html">Research</a></li><li><a href="publications.html">Publications</a></li><li><a href="news.html">News</a></li><li><a href="awards.html">Awards</a></li><li><a href="afm-3d-viewer/">AFM 3D Viewer</a></li></ul></div></nav>
+<nav class="site-nav" aria-label="사이트 메뉴"><div class="nav-in"><a class="logo" href="index.html">Kyungwon <b>Seo</b></a><ul><li><a href="index.html" data-home aria-current="page">Home</a></li><li><a href="profile.html">Profile</a></li><li><a href="research.html">Research</a></li><li><a href="publications.html">Publications</a></li><li><a href="news.html">News</a></li><li><a href="awards.html">Awards</a></li><li><a href="afm-3d-viewer/">AFM 3D Viewer</a></li></ul></div></nav>
 
-<header class="page-band cover">
-  <video class="cover-v" id="cover-v" muted loop playsinline autoplay preload="auto" poster="assets/zoom.jpg" aria-hidden="true" tabindex="-1">
+<header class="hero">
+  <video class="hero-v" id="cover-v" muted loop playsinline autoplay preload="auto" poster="assets/zoom.jpg" aria-hidden="true" tabindex="-1">
     <source src="assets/zoom-720.mp4" type="video/mp4" media="(max-width: 900px)">
     <source src="assets/zoom.mp4" type="video/mp4">
   </video>
   <div class="zs" id="zs" aria-hidden="true" hidden><span class="lb" id="zs-l"></span><span class="row"><span id="zs-v"></span><span class="bar" id="zs-b"></span></span><span class="nt">rendered illustration</span></div>
-  <div class="pf">
-    <img class="photo" src="assets/photo.jpg" alt="Kyungwon Seo" width="200" height="256">
-    <div>
-      <span class="kick">Researcher profile</span>
-      <h1 id="nm"></h1>
-      <p class="tl" id="tagline"></p>
-      <p class="aff" id="aff"></p>
-      <div class="links" id="links"></div>
-    </div>
-  </div>
+  <div class="hero-in"><h1 id="tagline"></h1></div>
 </header>
 
-<section class="band" id="about">
-  <div class="band-in">
-    <div class="nums" id="hl" aria-label="주요 실적" data-rv-kids></div>
-    <div class="sh" data-rv><span class="lbl">Research</span><h2>연구 분야</h2></div>
-    <p class="sum" id="sum" data-rv></p>
-    <div class="chips" id="kw" data-rv></div>
-    <div class="rs" id="rs" data-rv-kids></div>
-    <div class="btn-row" style="justify-content:center" data-rv><a class="pbtn" href="research.html">Research details</a></div>
-  </div>
-</section>
-
-<section class="band alt" id="cv">
-  <div class="band-in">
-    <div class="sh" data-rv><span class="lbl">CV</span><h2>Education &amp; Publications</h2></div>
-    <div class="two">
-      <div class="col" data-rv>
-        <h3 class="sub">Education</h3><ul class="tl" id="edu"></ul>
-        <h3 class="sub" style="margin-top:20px">Research Experience</h3><ul class="tl" id="exp"></ul>
-      </div>
-      <div class="col" data-rv>
-        <h3 class="sub">Selected Publications</h3><div class="sel" id="sel"></div>
-        <div class="btn-row" style="margin-top:8px"><a class="pbtn" href="publications.html">All publications</a></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="band" id="awards">
-  <div class="band-in">
-    <div class="sh" data-rv><span class="lbl">Honors</span><h2>Honors &amp; Awards</h2></div>
-    <ul class="tl aw" id="aw" data-rv></ul>
-  </div>
-</section>
-
-<section class="band alt" id="activities">
-  <div class="band-in">
-    <div class="sh" data-rv><span class="lbl">Activities</span><h2>Presentations &amp; Service</h2></div>
-    <div class="two">
-      <div class="col" data-rv>
-        <h3 class="sub">Oral Presentations</h3><ul class="tl" id="oral"></ul>
-        <h3 class="sub" style="margin-top:20px">Poster Presentations</h3><ul class="tl" id="poster"></ul>
-      </div>
-      <div class="col" data-rv><h3 class="sub">Service</h3><ul class="tl" id="svc"></ul></div>
-    </div>
-  </div>
-</section>
-
-<section class="band" id="collaborators">
-  <div class="band-in">
-    <div class="sh" data-rv><span class="lbl">Network</span><h2>Collaborators</h2><p id="co-n"></p></div>
-    <div class="co-tabs" id="co-tabs" role="tablist" aria-label="기관 종류" data-rv></div>
-    <div class="org-grid" id="co"></div>
-  </div>
-</section>
-
-<section class="band alt tight" id="contact">
-  <div class="band-in">
-    <div class="contact" data-rv>
-      <div class="sh"><span class="lbl">Contact</span></div>
-      <span class="em" id="em"></span>
-    </div>
-  </div>
-</section>
-
 <script>
-(function(){
-  const cv = window.KW_CV, esc = KW.esc, $ = id => document.getElementById(id);
-  $("nm").innerHTML = `${esc(cv.name)}<span class="ko">${esc(cv.name_ko)}</span>`;
-  $("tagline").textContent = cv.tagline;
-  $("aff").textContent = `${cv.role} · ${cv.lab} · ${cv.affiliation}`;
-  /* the address is stored as "name[at]domain[dot]kr" so it is not readable in the page source; the mailto is made here */
-  const mail = (cv.email || "").replace(/\[at\]/g, "@").replace(/\[dot\]/g, ".");
-  $("links").innerHTML = cv.links.map(l => `<a href="${esc(l.href)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join("")
-    + (/^[^@\s]+@[^@\s]+\.[a-z]+$/i.test(mail) ? `<a href="mailto:${esc(mail)}" title="${esc(mail)}">Email</a>` : "");
-  $("sum").textContent = cv.summary_ko;
-  $("kw").innerHTML = (cv.keywords || []).map(k => `<span>${esc(k)}</span>`).join("");
-
-  const M = cv.manuscripts || [];
-  $("hl").innerHTML = [
-    ["publications.html#articles", cv.publications.length, "Journal articles"],
-    ...(M.length ? [["publications.html#manuscripts", M.length, "Manuscripts"]] : []),
-    ["publications.html#patents", cv.patents.length, "Patents (KR, filed)"],
-    [null, `${cv.scholar.citations}`, `Citations · h-index ${cv.scholar.h_index}`]
-  ].map(([h, n, l]) => h ? `<a href="${h}"><b>${n}</b><span>${l}</span></a>` : `<div><b>${n}</b><span>${l}</span></div>`).join("");
-  $("hl").style.setProperty("--n", $("hl").children.length);
-
-  /* research areas live on research.html; here only their titles, each linking to its card there */
-  $("rs").innerHTML = cv.research.map((r, i) =>
-    `<a class="rs-a" href="research.html#area-${i + 1}"><span class="n">0${i + 1}</span><span class="t">${esc(r.t)}</span></a>`).join("");
-
-  const row = (w, t, d, items, cls) => `<li class="${cls || ""}"><span class="w">${esc(w)}</span><div><div class="t">${esc(t)}</div>${
-    d ? `<div class="d">${esc(d)}</div>` : ""}${items && items.length ? `<ul>${items.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}</div></li>`;
-  $("edu").innerHTML = cv.education.map(e => row(e.when, e.what, e.where)).join("");
-  $("exp").innerHTML = cv.experience.map(e => row(e.when, e.what, e.where, e.items)).join("");
-  $("aw").innerHTML = cv.awards.map(a => row(a.when, a.what, a.who, a.items, a.star ? "star" : "")).join("");
-  $("oral").innerHTML = cv.presentations.oral.map(p => row(p.when, p.what)).join("");
-  $("poster").innerHTML = cv.presentations.poster.map(p => row(p.when, p.what)).join("");
-  $("svc").innerHTML = cv.service.map(s => row(s.when, s.what, s.where)).join("");
-
-  $("sel").innerHTML = [...cv.publications].sort((a, b) => (b.if || 0) - (a.if || 0) || b.year - a.year).slice(0, 4).map(p =>
-    `<a href="https://doi.org/${esc(p.doi)}" target="_blank" rel="noopener"><span><span class="tt">${p.title}</span>
-      <span class="jj"><i>${esc(p.journal)}</i> (${p.year})</span></span>${p.if ? `<span class="if">IF ${p.if.toFixed(1)}</span>` : ""}</a>`).join("");
-
-  /* collaborators: one grid, filtered by organisation type */
-  const C = cv.collaborators, ko = (a, b) => a.localeCompare(b, "ko");
-  const orgs = C.orgs.slice().sort((a, b) => ko(a.name_ko, b.name_ko));
-  const sumOf = f => orgs.reduce((n, o) => n + o.people.reduce((m, p) => m + (p[f] || 0), 0), 0);
-  const on = sumOf("ongoing"), dn = sumOf("completed");
-  const teams = list => list.reduce((n, o) => n + o.people.length, 0);  /* one research team per PI */
-  $("co-n").textContent = on + dn ? `${teams(orgs)}개 연구팀 · 공동연구 ${on + dn}건 (진행중 ${on}, 완료 ${dn})` : `${teams(orgs)}개 연구팀`;
-  const groups = [{ type: "all", label: "All" }, ...C.groups.filter(g => orgs.some(o => o.type === g.type))];
-  const card = o => `<div class="org"><h4>${esc(o.name_ko)}</h4><span class="en">${esc(o.name_en)}</span><ul>${
-    o.people.slice().sort((a, b) => ko(a.pi, b.pi)).map(p => `<li><span class="pi">${esc(p.pi)} ${esc(p.title)}</span><span class="cnt">${
-      [p.ongoing ? `<span class="k on">진행중 ${p.ongoing}</span>` : "", p.completed ? `<span class="k done">완료 ${p.completed}</span>` : ""].join("")}</span></li>`).join("")
-  }</ul></div>`;
-  function show(type){
-    $("co").innerHTML = orgs.filter(o => type === "all" || o.type === type).map(card).join("");
-    [...$("co-tabs").children].forEach(b => b.setAttribute("aria-selected", b.dataset.t === type ? "true" : "false"));
-  }
-  $("co-tabs").innerHTML = groups.map(g => `<button type="button" role="tab" id="co-${g.type}" data-t="${g.type}">${esc(g.label)}<span class="c">${
-    teams(g.type === "all" ? orgs : orgs.filter(o => o.type === g.type))}</span></button>`).join("");
-  $("co-tabs").addEventListener("click", e => { const b = e.target.closest("button"); if (b) show(b.dataset.t); });
-  show("all");
-  $("em").textContent = cv.email;
-})();
+document.getElementById("tagline").textContent = (window.KW_CV || {}).tagline || "";
 </script>
 <script>
 /* cover video: plays only while on screen, not at all with reduced motion or data saver;
