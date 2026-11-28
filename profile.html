@@ -20,9 +20,9 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="assets/site.css?v=54281946">
-<script src="assets/cv.js?v=54281946"></script>
-<script src="assets/common.js?v=54281946"></script>
+<link rel="stylesheet" href="assets/site.css?v=44e6411c">
+<script src="assets/cv.js?v=44e6411c"></script>
+<script src="assets/common.js?v=44e6411c"></script>
 <style>
 .pf{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:auto minmax(0,1fr);gap:36px;align-items:center;
   padding-block:64px 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
@@ -223,7 +223,9 @@ ul.tl>li.star .w{color:var(--accent);font-weight:600}
   $("poster").innerHTML = cv.presentations.poster.map(p => row(p.when, p.what)).join("");
   $("svc").innerHTML = cv.service.map(s => row(s.when, s.what, s.where)).join("");
 
-  $("sel").innerHTML = [...cv.publications].sort((a, b) => (b.if || 0) - (a.if || 0) || b.year - a.year).slice(0, 4).map(p =>
+  /* selected publications: only papers marked "selected": true in cv.json (kept for Kyungwon's own first-author papers);
+     none marked yet, so the list stays empty and only the "All publications" button shows */
+  $("sel").innerHTML = cv.publications.filter(p => p.selected).sort((a, b) => b.year - a.year || (b.if || 0) - (a.if || 0)).map(p =>
     `<a href="https://doi.org/${esc(p.doi)}" target="_blank" rel="noopener"><span><span class="tt">${p.title}</span>
       <span class="jj"><i>${esc(p.journal)}</i> (${p.year})</span></span>${p.if ? `<span class="if">IF ${p.if.toFixed(1)}</span>` : ""}</a>`).join("");
 
@@ -252,7 +254,7 @@ ul.tl>li.star .w{color:var(--accent);font-weight:600}
 </script>
 
 <footer class="site-foot"><div class="foot-in"><span class="mark">Kyungwon <b>Seo</b></span><span>한양대학교 화학공학과 이미징 기반 소재 지능 연구실</span></div></footer>
-<script src="assets/site.js?v=54281946"></script>
+<script src="assets/site.js?v=44e6411c"></script>
 
 </body>
 </html>

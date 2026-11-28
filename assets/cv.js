@@ -294,6 +294,7 @@ window.KW_CV = {
    ]
   }
  ],
+ "_publications_note": "Profile 페이지 Selected Publications 에는 \"selected\": true 인 논문만 나옴. 본인 1저자 논문이 생기면 그 항목에만 표시 (지금은 없어서 비어 있음).",
  "publications": [
   {
    "year": 2026,
