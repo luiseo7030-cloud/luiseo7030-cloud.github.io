@@ -527,7 +527,7 @@ window.KW_CV = {
    "date": "2026-11-27",
    "tag": "paper",
    "title": "New paper in Advanced Functional Materials",
-   "text": "Our collaborative work on Sn-infused Zn(002) anodes, which shield grain boundaries against corrosion in aqueous Zn metal batteries, is out in Advanced Functional Materials. Kyungwon carried out the KPFM analysis. In collaboration with Prof. Hee-Dae Lim's team at Hanyang University.",
+   "text": "Our collaborative work on Sn-infused Zn(002) anodes that shield grain boundaries against corrosion in aqueous Zn metal batteries is out in Advanced Functional Materials (IF 19.0). Kyungwon carried out the KPFM analysis. In collaboration with Prof. Hee-Dae Lim's team at Hanyang University.",
    "links": [
     {
      "label": "DOI",
@@ -539,7 +539,7 @@ window.KW_CV = {
    "date": "2026-09-29",
    "tag": "paper",
    "title": "New paper in Small",
-   "text": "Our collaborative work on morphology-stabilized CsPbBr3 quantum dot films with PVC-g-PMMA graft-copolymer encapsulation is out in Small (IF 12.1). Kyungwon carried out the AFM analysis. In collaboration with Prof. Jung Tae Park's team at Yonsei University.",
+   "text": "Our collaborative work on CsPbBr3 quantum dot films stabilized by PVC-g-PMMA graft-copolymer encapsulation for water-robust color conversion is out in Small (IF 12.1). Kyungwon carried out the AFM analysis. In collaboration with Prof. Jung Tae Park's team at Yonsei University.",
    "links": [
     {
      "label": "DOI",
@@ -555,7 +555,7 @@ window.KW_CV = {
    "date": "2026-09-22",
    "tag": "paper",
    "title": "New paper in Chemical Engineering Journal",
-   "text": "Our joint paper, \"Hierarchical dual-crosslinked alginate interlayer for structurally uniform thin-film composite nanofiltration membranes\", is out in Chemical Engineering Journal (IF 13.2). Made possible by close collaboration with Prof. Jong Suk Lee's group at Sogang University.",
+   "text": "Our collaborative work on a hierarchical dual-crosslinked alginate interlayer for structurally uniform thin-film composite nanofiltration membranes is out in Chemical Engineering Journal (IF 13.2). Kyungwon carried out the liquid-phase AFM analysis. In collaboration with Prof. Jong Suk Lee's team at Sogang University.",
    "links": [
     {
      "label": "DOI",
@@ -571,7 +571,7 @@ window.KW_CV = {
    "date": "2026-07-29",
    "tag": "paper",
    "title": "New paper in Journal of Materials Chemistry A",
-   "text": "Competitive solvent coordination enables controlled crystallization for antisolvent-free perovskite solar cells. Out in J. Mater. Chem. A (IF 9.2), co-authored with Prof. Seulki Song's team at Chungnam National University.",
+   "text": "Our collaborative work on competitive solvent coordination that controls crystallization in antisolvent-free perovskite solar cells is out in Journal of Materials Chemistry A (IF 9.2). Kyungwon carried out the AFM analysis. In collaboration with Prof. Seulki Song's team at Chungnam National University.",
    "links": [
     {
      "label": "DOI",
@@ -646,7 +646,7 @@ window.KW_CV = {
    "date": "2026-01-13",
    "tag": "paper",
    "title": "New paper in Chemical Engineering Journal",
-   "text": "Polymer penetration suppression to enhance gas separation in composite hollow fiber membranes, out in Chemical Engineering Journal (IF 13.2, JCR top 3%). Co-authored with Prof. Hyo Won Kim's team at KENTECH.",
+   "text": "Our collaborative work on suppressing polymer penetration to enhance gas separation in composite hollow fiber membranes is out in Chemical Engineering Journal (IF 13.2). Kyungwon carried out the AFM analysis. In collaboration with Prof. Hyo Won Kim's team at KENTECH.",
    "links": [
     {
      "label": "DOI",
@@ -659,10 +659,10 @@ window.KW_CV = {
    ]
   },
   {
-   "date": "2025-12-11",
+   "date": "2025-12-26",
    "tag": "paper",
-   "title": "Accepted in Small",
-   "text": "Our collaboration with Prof. Jin Woong Kim's team (SKKU) on mechanical-threshold-guided harvesting of microalgal therapeutics with designer nanovesicles was accepted in Small (IF 12.1, JCR top 7%). Kyungwon performed the liquid-phase AFM nanomechanics.",
+   "title": "New paper in Small",
+   "text": "Our collaborative work on mechanical-threshold-guided harvesting of microalgal therapeutics with designer nanovesicles is out in Small (IF 12.1). Kyungwon carried out the liquid-phase AFM nanomechanical measurements. In collaboration with Prof. Jin Woong Kim's team at Sungkyunkwan University.",
    "links": [
     {
      "label": "DOI",
@@ -732,8 +732,8 @@ window.KW_CV = {
    "date": "2025-01",
    "tag": "paper",
    "star": true,
-   "title": "First SCI paper, in Carbohydrate Polymers",
-   "text": "Kyungwon's first journal article: a synergistic Laponite swollen-layer and heparin composite coating for antifouling and antithrombotic surfaces, in Carbohydrate Polymers 348, 122875 (IF 10.7). Liquid-phase AFM in collaboration with Dr. Jin Yoo's team at KIST.",
+   "title": "New paper in Carbohydrate Polymers",
+   "text": "Our collaborative work on a synergistic Laponite swollen-layer and heparin composite coating for antifouling and antithrombotic surfaces is out in Carbohydrate Polymers (IF 10.7). Kyungwon carried out the liquid-phase AFM analysis. In collaboration with Dr. Jin Yoo's team at KIST. This is Kyungwon's first journal article.",
    "links": [
     {
      "label": "DOI",
