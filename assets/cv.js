@@ -539,7 +539,7 @@ window.KW_CV = {
    "date": "2026-09-29",
    "tag": "paper",
    "title": "New paper in Small",
-   "text": "Our collaborative work on CsPbBr3 quantum dot films stabilized by PVC-g-PMMA graft-copolymer encapsulation for water-robust color conversion is out in Small (IF 12.1). Kyungwon carried out the AFM analysis. In collaboration with Prof. Jung Tae Park's team at Yonsei University.",
+   "text": "Our collaborative work on CsPbBr3 quantum dot films stabilized by PVC-g-PMMA graft-copolymer encapsulation for water-robust color conversion is out in Small (IF 12.1). Kyungwon carried out the liquid-phase AFM analysis. In collaboration with Prof. Jung Tae Park's team at Yonsei University.",
    "links": [
     {
      "label": "DOI",
