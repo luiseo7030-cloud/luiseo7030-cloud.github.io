@@ -294,7 +294,6 @@ window.KW_CV = {
    ]
   }
  ],
- "_publications_note": "Profile 페이지 Selected Publications 에는 \"selected\": true 인 논문만 나옴. 본인 1저자 논문이 생기면 그 항목에만 표시 (지금은 없어서 비어 있음).",
  "publications": [
   {
    "year": 2026,
@@ -524,18 +523,6 @@ window.KW_CV = {
   }
  ],
  "news": [
-  {
-   "date": "2027-03-01",
-   "tag": "lab",
-   "title": "A new chapter at Hanyang University",
-   "text": "Kyungwon begins graduate study in the Department of Chemical Engineering, Hanyang University, Seoul, continuing research in the Morphology Intelligence Lab (Prof. Hyosung An), which moved to Hanyang in September 2026.",
-   "links": [
-    {
-     "label": "Lab news",
-     "href": "https://www.hyosung-an.com/news"
-    }
-   ]
-  },
   {
    "date": "2026-11-27",
    "tag": "paper",
