@@ -539,7 +539,7 @@ window.KW_CV = {
    "date": "2026-11-27",
    "tag": "paper",
    "title": "New paper in Advanced Functional Materials",
-   "text": "Our collaborative work on Sn-infused Zn(002) anodes, which shield grain boundaries against corrosion in aqueous Zn metal batteries, is out in Advanced Functional Materials. Kyungwon contributed data curation and visualization. In collaboration with Hee-Dae Lim's and Chanhoon Kim's teams at Hanyang University and Dong Ok Shin's team at ETRI.",
+   "text": "Our collaborative work on Sn-infused Zn(002) anodes, which shield grain boundaries against corrosion in aqueous Zn metal batteries, is out in Advanced Functional Materials. Kyungwon carried out the KPFM analysis. In collaboration with Prof. Hee-Dae Lim's team at Hanyang University.",
    "links": [
     {
      "label": "DOI",
